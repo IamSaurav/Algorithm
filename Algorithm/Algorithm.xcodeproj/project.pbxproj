@@ -13,6 +13,8 @@
 		23F548FA20F900FC00C174BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F548F920F900FC00C174BC /* Assets.xcassets */; };
 		23F548FD20F900FC00C174BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F548FB20F900FC00C174BC /* LaunchScreen.storyboard */; };
 		23F5490820F900FC00C174BC /* AlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5490720F900FC00C174BC /* AlgorithmTests.swift */; };
+		23F5491320F9018700C174BC /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5491220F9018700C174BC /* SelectionSort.swift */; };
+		23F5491520F9018D00C174BC /* SortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5491420F9018D00C174BC /* SortingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		23F5490320F900FC00C174BC /* AlgorithmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F5490720F900FC00C174BC /* AlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTests.swift; sourceTree = "<group>"; };
 		23F5490920F900FD00C174BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F5491220F9018700C174BC /* SelectionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
+		23F5491420F9018D00C174BC /* SortingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		23F548F120F900FC00C174BC /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				23F5491220F9018700C174BC /* SelectionSort.swift */,
 				23F548F220F900FC00C174BC /* AppDelegate.swift */,
 				23F548F420F900FC00C174BC /* ViewController.swift */,
 				23F548F620F900FC00C174BC /* Main.storyboard */,
@@ -90,6 +95,7 @@
 		23F5490620F900FC00C174BC /* AlgorithmTests */ = {
 			isa = PBXGroup;
 			children = (
+				23F5491420F9018D00C174BC /* SortingTests.swift */,
 				23F5490720F900FC00C174BC /* AlgorithmTests.swift */,
 				23F5490920F900FD00C174BC /* Info.plist */,
 			);
@@ -200,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F548F520F900FC00C174BC /* ViewController.swift in Sources */,
+				23F5491320F9018700C174BC /* SelectionSort.swift in Sources */,
 				23F548F320F900FC00C174BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23F5491520F9018D00C174BC /* SortingTests.swift in Sources */,
 				23F5490820F900FC00C174BC /* AlgorithmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
