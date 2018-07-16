@@ -1,22 +1,25 @@
 //
-//  SortingTests.swift
+//  BubbleSortTests.swift
 //  AlgorithmTests
 //
-//  Created by 703177729 on 13/07/18.
+//  Created by Saurav Satpathy on 17/07/18.
 //  Copyright © 2018 com.fsfes.frewfer. All rights reserved.
 //
 
 import XCTest
 import UIKit
 
-class SortingTests: XCTestCase {
+@testable
+import Algorithm
 
+class BubbleSortTests: XCTestCase {
+    
     typealias SortFunction = ([Int]) -> [Int]
     var sortFunction: SortFunction!
     
     override func setUp() {
         super.setUp()
-        sortFunction = SelectionSort.init().selectionSort
+        sortFunction = BubbleSort.init().bubbleSort
     }
     
     override func tearDown() {
@@ -58,10 +61,6 @@ class SortingTests: XCTestCase {
         let sortedArray = sortFunction(unsortedArray)
         XCTAssertEqual(sortedArray, [0,1,2,3,4,5])
     }
-
-    func testExample() {
-        
-    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
@@ -69,8 +68,5 @@ class SortingTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-
-    
     
 }
