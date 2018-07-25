@@ -9,40 +9,42 @@
 import UIKit
 
 class Stack: NSObject {
-    var top: Node?
-    var size: Int = 0
-    public class Node: NSObject {
-        var data: Any!
+    private(set) var top: Node?
+    private(set) var size: uint = 0
+    
+    class Node {
+        var data: Int?
         var next: Node?
-        
-        public class func create(data: Any, next: Node?) -> Node {
+        class func create(data: Int, next: Node?) -> Node {
             let node = Node.init()
-            node.next = next
             node.data = data
+            node.next = next
             return node
         }
     }
     
-    func isEmpty() -> Bool {
-        return top == nil
-    }
-    
-    // Returns value of first element without dequeing it.
-    func peek() -> Any? {
+    func peek() -> Int? {
         return top?.data
     }
     
-    func push(data: Any) {
-        let node = Node.create(data: data, next: top)
-        top = node
-        size += 1
+    func isEmpty() -> Bool {
+        return size == 0
     }
     
     @discardableResult
-    func pop() -> Any? {
+    func push(data: Int) -> Int? {
+        let node  = Node.create(data: data, next: top)
+        top = node
+        size += 1
+        return node.data
+    }
+    
+    @discardableResult
+    func pop() -> Int? {
         let data = top?.data
         top = top?.next
-        size -= 1
+        size = size > 0 ?  size - 1 : size
         return data
     }
+    
 }
