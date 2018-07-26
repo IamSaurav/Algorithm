@@ -17,7 +17,6 @@ class Queue {
     class Node {
         var data: Int?
         var next: Node?
-        
         class func create(data: Int, next: Node?) -> Node {
             let node = Node.init()
             node.data = data
@@ -35,22 +34,26 @@ class Queue {
     }
     
     func enque(data: Int) {
-        let node = Node.create(data: data, next: head)
-        if let top = head {
-            head = top
-        }else{
+        let node = Node.create(data: data, next: nil)
+        if tail == nil{
             head = node
+            tail = node
+        }else{
+            tail?.next = node
+            tail = node
         }
         size += 1
     }
     
     @discardableResult
     func deque() -> Int? {
+        if head == nil{
+            return nil
+        }
         let data = head?.data
-        if head == nil {
-            head?.next = head
-        }else{
-            head = nil
+        head = head?.next
+        if head == nil{
+            tail = nil
         }
         size -= size > 0 ? 1 : 0
         return data
