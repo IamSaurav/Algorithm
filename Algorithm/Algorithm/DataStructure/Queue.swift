@@ -8,62 +8,54 @@
 
 import UIKit
 
-class Queue: NSObject {
-    var head: Node?
-    var tail: Node?
-    var size: Int = 0
+class Queue {
     
-    public class Node: NSObject {
-        var data: Any!
+    private (set) var head: Node?
+    private (set) var tail: Node?
+    private (set) var size: uint = 0
+    
+    class Node {
+        var data: Int?
         var next: Node?
         
-        public class func create(data: Any, next: Node?) -> Node {
+        class func create(data: Int, next: Node?) -> Node {
             let node = Node.init()
-            node.next = next
             node.data = data
+            node.next = next
             return node
         }
     }
     
-    func isEmpty() -> Bool {
-        return head == nil
-    }
-    
-    // Returns value of first element without dequeing it.
-    func peek() -> Any? {
+    func peek() -> Int? {
         return head?.data
     }
     
-    // Returns value of first element without dequeing it.
-    func poll() -> Any? {
-        if let top = head {
-            return dequeue(node: top)
-        }
-        return nil
+    func isEmpty() -> Bool {
+        return size == 0
     }
     
-    func enqueue(data: Any) {
-        let node = Node.create(data: data, next: nil)
-        if tail == nil{
-            head = node
-            tail = node
+    func enque(data: Int) {
+        let node = Node.create(data: data, next: head)
+        if let top = head {
+            head = top
         }else{
-            tail?.next = node
-            tail = node
+            head = node
         }
         size += 1
     }
     
-    func dequeue(node: Node) -> Any? {
-        if head == nil{
-            return nil
-        }
+    @discardableResult
+    func deque() -> Int? {
         let data = head?.data
-        head = head?.next
-        if head == nil{
-            tail = nil
+        if head == nil {
+            head?.next = head
+        }else{
+            head = nil
         }
-        size -= 1
+        size -= size > 0 ? 1 : 0
         return data
     }
+    
+
+
 }

@@ -43,7 +43,7 @@ class Stack: NSObject {
     func pop() -> Int? {
         let data = top?.data
         top = top?.next
-        size = size > 0 ?  size - 1 : size
+        size -= size > 0 ? 1 : 0
         return data
     }
     

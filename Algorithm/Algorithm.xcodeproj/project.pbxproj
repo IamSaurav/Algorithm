@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
 		23F548F320F900FC00C174BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F220F900FC00C174BC /* AppDelegate.swift */; };
 		23F548F520F900FC00C174BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F420F900FC00C174BC /* ViewController.swift */; };
 		23F548F820F900FC00C174BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F548F620F900FC00C174BC /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		23F548EF20F900FC00C174BC /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F548F220F900FC00C174BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23F548F420F900FC00C174BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E09B95182109090D004D5871 /* StackTests.swift */,
+				23927737210A045C000B3C44 /* QueueTests.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				E0A729E720FD264B00A88E75 /* MergeSortTests.swift in Sources */,
 				E0A729FB20FD289000A88E75 /* BubbleSortTests.swift in Sources */,
 				23F5491520F9018D00C174BC /* SelectionSortTests.swift in Sources */,
+				23927738210A045C000B3C44 /* QueueTests.swift in Sources */,
 				E09B95192109090D004D5871 /* StackTests.swift in Sources */,
 				E0A729F220FD27A500A88E75 /* InsertionSortTests.swift in Sources */,
 				E0A729F620FD27BD00A88E75 /* HeapSortTests.swift in Sources */,

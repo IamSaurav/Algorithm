@@ -31,6 +31,12 @@ class StackTests: XCTestCase {
         let stack = Stack.init()
         stack.push(data: 23)
         XCTAssertEqual(stack.pop(), 23)
+        stack.push(data: 24)
+        stack.push(data: 25)
+        stack.push(data: 26)
+        stack.pop()
+        stack.pop()
+        XCTAssertEqual(stack.pop(), 24)
     }
     
     func testIsEmpty() {
