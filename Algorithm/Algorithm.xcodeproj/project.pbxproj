@@ -35,6 +35,7 @@
 		E0A72A0C20FD2CB500A88E75 /* DoublyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A72A0B20FD2CB500A88E75 /* DoublyLinkedList.swift */; };
 		E0A72A0E20FD2CC000A88E75 /* CircularLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A72A0D20FD2CC000A88E75 /* CircularLinkedList.swift */; };
 		E0A72A1020FD2D6F00A88E75 /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A72A0F20FD2D6F00A88E75 /* HashTable.swift */; };
+		E0CA1B94210BB3EC00AC19A2 /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CA1B93210BB3EC00AC19A2 /* LinkedListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E0A72A0B20FD2CB500A88E75 /* DoublyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublyLinkedList.swift; sourceTree = "<group>"; };
 		E0A72A0D20FD2CC000A88E75 /* CircularLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLinkedList.swift; sourceTree = "<group>"; };
 		E0A72A0F20FD2D6F00A88E75 /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		E0CA1B93210BB3EC00AC19A2 /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				E09B95182109090D004D5871 /* StackTests.swift */,
 				23927737210A045C000B3C44 /* QueueTests.swift */,
+				E0CA1B93210BB3EC00AC19A2 /* LinkedListTests.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A729E720FD264B00A88E75 /* MergeSortTests.swift in Sources */,
+				E0CA1B94210BB3EC00AC19A2 /* LinkedListTests.swift in Sources */,
 				E0A729FB20FD289000A88E75 /* BubbleSortTests.swift in Sources */,
 				23F5491520F9018D00C174BC /* SelectionSortTests.swift in Sources */,
 				23927738210A045C000B3C44 /* QueueTests.swift in Sources */,

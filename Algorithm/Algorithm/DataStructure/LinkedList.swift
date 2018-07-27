@@ -18,7 +18,7 @@ class LinkedList: NSObject {
         var prev: Node?
         var next: Node?
         
-        class func create(data: Int) -> Node {
+        class func create(data: Int, prev: Node?, next: Node?) -> Node {
             let node = Node.init()
             node.data = data
             return node
@@ -26,25 +26,34 @@ class LinkedList: NSObject {
     }
     
     func isEmpty() -> Bool {
-        return size > 0
+        return size == 0
     }
     
     func insert(data: Int) {
-        let node = Node.create(data: data)
         if head == nil{
-            head = node
-            head?.prev = node
-            head?.next = node
+            head = Node.create(data: data, prev: nil, next: nil)
         }else{
-            head = node
-            head?.prev = node
-            head?.next = node
+            var current = head
+            while current?.next != nil{
+                current = current?.next
+            }
+            current?.next = Node.create(data: data, prev: head, next: nil)
         }
+        size += 1
     }
     
-    func delete(data: Int) {
-        
+    @discardableResult
+    func delete() -> Int? {
+        var current = head
+        while current?.next != nil{
+            current = current?.next
+        }
+        let data = current?.data
+        current = current?.next
+        size -= size > 0 ? 1 : 0
+        return data
     }
+    
     
     
     
