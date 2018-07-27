@@ -19,10 +19,10 @@ class QueueTests: XCTestCase {
     func testEnque() {
         let queue = Queue.init()
         queue.enque(data: 5)
-        XCTAssertEqual(queue.head?.data, 5)
+        XCTAssertEqual(queue.first?.data, 5)
         queue.enque(data: 6)
         queue.enque(data: -60009)
-        XCTAssertEqual(queue.head?.data, 5)
+        XCTAssertEqual(queue.first?.data, 5)
         XCTAssertEqual(queue.size, 3)
     }
     

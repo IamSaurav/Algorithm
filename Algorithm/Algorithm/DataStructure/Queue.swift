@@ -10,8 +10,8 @@ import UIKit
 
 class Queue {
     
-    private (set) var head: Node?
-    private (set) var tail: Node?
+    private (set) var first: Node?
+    private (set) var last: Node?
     private (set) var size: uint = 0
     
     class Node {
@@ -26,7 +26,7 @@ class Queue {
     }
     
     func peek() -> Int? {
-        return head?.data
+        return first?.data
     }
     
     func isEmpty() -> Bool {
@@ -35,25 +35,23 @@ class Queue {
     
     func enque(data: Int) {
         let node = Node.create(data: data, next: nil)
-        if tail == nil{
-            head = node
-            tail = node
+        if first == nil{
+            first = node
+            last = node
         }else{
-            tail?.next = node
-            tail = node
+            last?.next = node
+            last = node
         }
         size += 1
     }
     
     @discardableResult
     func deque() -> Int? {
-        if head == nil{
-            return nil
-        }
-        let data = head?.data
-        head = head?.next
-        if head == nil{
-            tail = nil
+        let data = first?.data
+        if first == nil{
+            last = nil
+        }else{
+            first = first?.next
         }
         size -= size > 0 ? 1 : 0
         return data
