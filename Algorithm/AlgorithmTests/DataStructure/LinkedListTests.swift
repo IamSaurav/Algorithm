@@ -29,18 +29,23 @@ class LinkedListTests: XCTestCase {
     func testDelete() {
         let list = LinkedList.init()
         list.insert(data: 23)
-        XCTAssertEqual(list.delete(), 23)
+        XCTAssertEqual(list.size, 1)
+        XCTAssertEqual(list.delete(data: 23), 23)
         list.insert(data: 24)
         list.insert(data: 25)
         list.insert(data: 26)
-        list.delete()
-        XCTAssertEqual(list.delete(), 25)
+        XCTAssertEqual(list.size, 3)
+        list.delete(data: 25)
+        XCTAssertEqual(list.delete(data: 26), 26)
+        XCTAssertEqual(list.size, 1)
+        list.delete(data: 24)
+        XCTAssertEqual(list.size, 0)
     }
     
     func testIsEmpty() {
         let list = LinkedList.init()
         for _ in 0..<3000 {
-            list.delete()
+            list.delete(data: 10)
         }
         XCTAssertEqual(list.isEmpty(), true)
         list.insert(data: 10)

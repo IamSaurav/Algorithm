@@ -12,7 +12,7 @@ class LinkedList: NSObject {
     
     private (set) var head: Node?
     private (set) var size: uint = 0
-    
+
     class Node {
         var data: Int?
         var prev: Node?
@@ -43,15 +43,15 @@ class LinkedList: NSObject {
     }
     
     @discardableResult
-    func delete() -> Int? {
+    func delete(data: Int) -> Int? {
         var current = head
-        while current?.next != nil{
+        while current?.next != nil && current?.data != data {
             current = current?.next
         }
-        let data = current?.data
-        current = current?.next
-        size -= size > 0 ? 1 : 0
-        return data
+        let headData = current?.data
+        current?.prev?.next = current
+        size -= size > 0 ? 1: 0
+        return headData
     }
     
     
