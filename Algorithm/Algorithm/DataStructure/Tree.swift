@@ -40,29 +40,30 @@ class Tree: NSObject {
     }
     
     @discardableResult
-    func deleteNode(data: Int) -> Node? {
-        return deleteNode(current: &root, data: data)
+    func deleteNode(data: Int) -> Int? {
+        var current = root
+        deleteNode(current: &current, data: data)
+        return current?.data
     }
     
-    func deleteNode(current: inout Node?, data: Int) -> Node? {
+    func deleteNode(current: inout Node?, data: Int) {
         if let node = current {
-            if data < node.data {
-                node.left = deleteNode(current: &node.left, data: data)
-            }else if data > node.data{
-                node.right = deleteNode(current: &node.right, data: data)
-            }else if node.left == nil {
-                return node.right
-            }else if node.right == nil{
-                return node.left
+            if data == node.data{
+                if node.left == nil{
+                    deleteNode(current: &node.right, data: data)
+                }else if node.right == nil{
+                    deleteNode(current: &node.left, data: data)
+                }else{
+                    node.data = minimumElement(current: &node.right)?.data
+                    deleteNode(current: &node.right, data: data)
+                }
+            }else if data < node.data{
+                deleteNode(current: &node.left, data: data)
             }else{
-                let minElement = minimumElement(current: &node.right)
-                current?.data = minElement?.data
-                node.right = deleteNode(current: &node.right, data: (minElement?.data)!)
+                deleteNode(current: &node.right, data: data)
             }
-            return current
-        } else {
-            return nil
         }
+        return
     }
     
     func minimumElement(current: inout Node?) -> Node? {

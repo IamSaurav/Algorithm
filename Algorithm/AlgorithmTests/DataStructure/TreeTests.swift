@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Algorithm
 
 class TreeTests: XCTestCase {
     
@@ -20,7 +21,26 @@ class TreeTests: XCTestCase {
         super.tearDown()
     }
     
-
+    func testInsert() {
+        let tree = Tree.init()
+        tree.insert(data: 20)
+        XCTAssertEqual(tree.root?.data, 20)
+        tree.insert(data: 8)
+        tree.insert(data: -90020)
+        XCTAssertEqual(tree.root?.data, 20)
+    }
+    
+    func testDelete() {
+        let tree = Tree.init()
+        tree.insert(data: 20)
+        XCTAssertEqual(tree.root?.data, 20)
+        tree.deleteNode(data: 20)
+        tree.insert(data: 7)
+        tree.insert(data: 10)
+        tree.insert(data: 8)
+        tree.insert(data: -9)
+//        XCTAssertEqual(tree.deleteNode(data: 7), 7)
+    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
