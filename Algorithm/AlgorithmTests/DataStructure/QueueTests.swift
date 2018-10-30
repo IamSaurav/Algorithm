@@ -3,7 +3,7 @@
 //  AlgorithmTests
 //
 //  Created by 703177729 on 26/07/18.
-//  Copyright © 2018 com.fsfes.frewfer. All rights reserved.
+//  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
 import XCTest
