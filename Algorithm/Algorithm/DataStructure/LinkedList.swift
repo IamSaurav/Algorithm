@@ -54,8 +54,4 @@ class LinkedList: NSObject {
         return headData
     }
     
-    
-    
-    
-    
 }

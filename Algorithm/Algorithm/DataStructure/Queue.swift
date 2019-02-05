@@ -57,6 +57,4 @@ class Queue {
         return data
     }
     
-
-
 }
