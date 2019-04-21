@@ -22,8 +22,12 @@ class QueueTests: XCTestCase {
         XCTAssertEqual(queue.first?.data, 5)
         queue.enque(data: 6)
         queue.enque(data: -60009)
-        XCTAssertEqual(queue.first?.data, 5)
+        XCTAssertEqual(queue.peek(), 5)
         XCTAssertEqual(queue.size, 3)
+        XCTAssertEqual(queue.deque(), 5)
+        XCTAssertEqual(queue.deque(), 6)
+        XCTAssertEqual(queue.deque(), -60009)
+        XCTAssertEqual(queue.deque(), nil)
     }
     
     func testDeque() {

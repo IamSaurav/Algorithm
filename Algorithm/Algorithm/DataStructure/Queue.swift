@@ -6,6 +6,17 @@
 //  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
+/********** INTRODUCTION **************
+ Queue is a linear data structure.
+ Elements will be added in end.
+ Elements will be removed from start.
+ FIFO - opertion
+ Insertion operation called Enque
+ Deletion operation called Deque
+ Getting data of first element is called - Peek
+ ********** INTRODUCTION **************/
+
+
 import UIKit
 
 class Queue {
@@ -39,7 +50,9 @@ class Queue {
             first = node
             last = node
         }else{
+            // Current last node's next will be the new last.
             last?.next = node
+            // This new node will become the last node.
             last = node
         }
         size += 1
