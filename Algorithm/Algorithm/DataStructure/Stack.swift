@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Stack: NSObject {
+class Stack {
     private(set) var top: Node?
     private(set) var size: uint = 0
     

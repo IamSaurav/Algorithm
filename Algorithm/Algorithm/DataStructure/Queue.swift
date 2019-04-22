@@ -60,13 +60,13 @@ class Queue {
     
     @discardableResult
     func deque() -> Int? {
+        // Keeps the data, just to return after deletion.
         let data = first?.data
-        if first == nil{
-            last = nil
-        }else{
+        if first != nil {
             first = first?.next
+            last = first == nil ? nil: last
+            size -= 1
         }
-        size -= size > 0 ? 1 : 0
         return data
     }
     

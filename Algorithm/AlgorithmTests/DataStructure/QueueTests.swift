@@ -37,8 +37,15 @@ class QueueTests: XCTestCase {
         queue.enque(data: 24)
         queue.enque(data: 25)
         queue.enque(data: 26)
+        XCTAssertEqual(queue.size, 3)
         queue.deque()
+        XCTAssertEqual(queue.size, 2)
         XCTAssertEqual(queue.deque(), 25)
+        XCTAssertEqual(queue.size, 1)
+        XCTAssertEqual(queue.deque(), 26)
+        XCTAssertEqual(queue.size, 0)
+        XCTAssertEqual(queue.deque(), nil)
+        XCTAssertEqual(queue.size, 0)
     }
     
     func testIsEmpty() {
@@ -65,10 +72,7 @@ class QueueTests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
-            //            for i in 0..<3000 {
-            //                let stack = Stack.init()
-            //                stack.push(data: i)
-            //            }
+            
         }
     }
     

@@ -9,7 +9,7 @@
 /********** INTRODUCTION **************
  LinkedLists are of three types Singly, Doubly, Circular.
  Elements can be added anywhere, but generally at end.
- Elements can be removed from anywhere, but generally from end.
+ Elements can be removed from anywhere start, middle or end.
  ********** INTRODUCTION **************/
 
 
@@ -63,7 +63,7 @@ class LinkedList: NSObject {
         // Q: current?.prev?.next ultimately is current node, isn't it? :D :D
         // Ans: No it is not, we have to assign next node reference of previous node to nil.
         // Q: Wait but you are not assigning nil, why?
-        // Ans: Well we are assigning nil in cases where you are trying to delete the last node. But what about a node in the middle you want to delete, in that case we will have to assign the very next node to previous node by eleminating the current node.
+        // Ans: Well we are assigning nil in cases where, you are trying to delete the last node. But what about a node in the middle you want to delete, in that case we will have to assign the very next node to previous node by eleminating the current node.
         current?.prev?.next = current
         size -= size > 0 ? 1: 0
         return headData
