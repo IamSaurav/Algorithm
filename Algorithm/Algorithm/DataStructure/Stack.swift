@@ -6,6 +6,16 @@
 //  Copyright © 2018 com.bitMountn.Algorithm All rights reserved.
 //
 
+/********** INTRODUCTION **************
+ Stack is a linear data structure.
+ Data will be added only in end.
+ Data will be removed only from end.
+ LIFO - opertion
+ Insertion operation called Push
+ Deletion operation called Pop
+ Getting data of first element is called - Peek
+ ********** INTRODUCTION **************/
+
 import UIKit
 
 class Stack {
@@ -14,11 +24,11 @@ class Stack {
     
     class Node {
         var data: Int?
-        var next: Node?
-        class func create(data: Int, next: Node?) -> Node {
+        var prev: Node?
+        class func create(data: Int, prev: Node?) -> Node {
             let node = Node.init()
             node.data = data
-            node.next = next
+            node.prev = prev
             return node
         }
     }
@@ -33,16 +43,19 @@ class Stack {
     
     @discardableResult
     func push(data: Int) -> Int? {
-        let node  = Node.create(data: data, next: top)
+        // Top node will become previous node of new node
+        let node  = Node.create(data: data, prev: top)
+        // New node will become the top node.
         top = node
         size += 1
         return node.data
     }
-    
+
     @discardableResult
     func pop() -> Int? {
         let data = top?.data
-        top = top?.next
+        // Prev node of top node will be new top node.
+        top = top?.prev
         size -= size > 0 ? 1 : 0
         return data
     }
