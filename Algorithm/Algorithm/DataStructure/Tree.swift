@@ -6,6 +6,15 @@
 //  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
+/********** INTRODUCTION **************
+ Tree is a non-linear data structure, because it's nodes connects to multile node.
+ In general tree each node can have infinite number of children.
+ In Binary tree each node has at most two nodes left and right, we have implemented binary tree below.
+ The topmost node is called root of the tree.
+ The nodes directly connected called its children.
+ Use case-file system on a computer.
+ ********** INTRODUCTION **************/
+
 import UIKit
 
 class Tree: NSObject {
