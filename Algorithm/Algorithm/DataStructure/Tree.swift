@@ -50,37 +50,29 @@ class Tree: NSObject {
     
     @discardableResult
     func deleteNode(data: Int) -> Int? {
-        var current = root
-        deleteNode(current: &current, data: data)
-        return current?.data
-    }
-    
-    func deleteNode(current: inout Node?, data: Int) {
-        if let node = current {
-            if data == node.data{
-                if node.left == nil{
-                    deleteNode(current: &node.right, data: data)
-                }else if node.right == nil{
-                    deleteNode(current: &node.left, data: data)
-                }else{
-                    node.data = minimumElement(current: &node.right)?.data
-                    deleteNode(current: &node.right, data: data)
-                }
-            }else if data < node.data{
-                deleteNode(current: &node.left, data: data)
-            }else{
-                deleteNode(current: &node.right, data: data)
-            }
-        }
-        return
+        delete(current: &root, data: data)
+        return data
+        
+        /*
+         Either create a local copy of root to pass to the delete method or pass the root itself.
+         If copy of of root passed then it needs to be assigned back to root after delete method execution.
+         Because while deleting when there is only one node left and that that is root node, you can delete all the references but root node will not become null.
+         
+         var current = root
+         delete(current: &current, data: data)
+         root = current
+         return current?.data
+         */
     }
     
     func minimumElement(current: inout Node?) -> Node? {
-        if let node = current?.left{
-            return minimumElement(current: &node.left)
-        }else{
-            return current
+        if var node = current {
+            while node.left != nil {
+                node = node.left!
+            }
+            return node
         }
+        return current
     }
     
     func readNodes() -> [Node] {
@@ -116,4 +108,35 @@ class Tree: NSObject {
             }
         }
     }
+    
+    /*
+     Logic: We need to find the a node by iterating the tree, with data same as data to be deleted.
+     There can three scenario, data is equal, smaller or greater than the current node.
+    */
+    func delete(current: inout Node?, data: Int)  {
+        // If root node is null then nothing to delete.
+        if let node = current {
+            if data < node.data{
+                delete(current: &node.left, data: data)
+            }else if data > node.data{
+                delete(current: &node.right, data: data)
+            }else{
+                if node.left == nil && node.right == nil{
+                    current = nil
+                }else if node.left == nil {
+                    current = node.right
+                }else if node.right == nil {
+                    current = node.left
+                }else{
+                    let data = minimumElement(current: &node.right)?.data
+                    current?.data = data
+                    delete(current: &node.right, data: data!)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
 }

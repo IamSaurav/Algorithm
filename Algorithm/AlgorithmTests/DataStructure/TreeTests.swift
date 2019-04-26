@@ -33,13 +33,30 @@ class TreeTests: XCTestCase {
     func testDelete() {
         let tree = Tree.init()
         tree.insert(data: 20)
-        XCTAssertEqual(tree.root?.data, 20)
-        tree.deleteNode(data: 20)
         tree.insert(data: 7)
         tree.insert(data: 10)
+        tree.insert(data: 11)
+        tree.insert(data: 11)
         tree.insert(data: 8)
+        tree.insert(data: 22)
         tree.insert(data: -9)
-//        XCTAssertEqual(tree.deleteNode(data: 7), 7)
+        tree.deleteNode(data: 20)
+
+        tree.deleteNode(data: 7)
+        tree.deleteNode(data: -9)
+        tree.deleteNode(data: 10)
+        tree.deleteNode(data: 8)
+        tree.deleteNode(data: 22)
+        tree.deleteNode(data: 11)
+        tree.deleteNode(data: 11)
+        tree.deleteNode(data: 20)
+        
+//        XCTAssertEqual(tree.root?.data, 20)
+//        tree.deleteNode(data: 20)
+        
+        tree.readNodes().forEach { (node) in
+            print(node.data)
+        }
     }
     
     func testPerformanceExample() {
