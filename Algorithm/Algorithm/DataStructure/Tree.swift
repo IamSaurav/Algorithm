@@ -33,6 +33,15 @@ class Tree: NSObject {
     var root: Node?
     
     func insert(data: Int) {
+        /*
+         Either create a local copy of root to pass to the insert method or pass the root itself.
+         If copy of of root passed then it needs to be assigned back to root after insert method execution.
+         Because while inserting you can insert to local copy but not to the root.
+         var current = root
+         insert(current: &current, data: data)
+         root = current
+         return current?.data
+         */
         insert(current: &root, data: data)
     }
     
@@ -49,10 +58,7 @@ class Tree: NSObject {
     }
     
     @discardableResult
-    func deleteNode(data: Int) -> Int? {
-        delete(current: &root, data: data)
-        return data
-        
+    func delete(data: Int) -> Int? {
         /*
          Either create a local copy of root to pass to the delete method or pass the root itself.
          If copy of of root passed then it needs to be assigned back to root after delete method execution.
@@ -63,6 +69,9 @@ class Tree: NSObject {
          root = current
          return current?.data
          */
+        
+        delete(current: &root, data: data)
+        return data
     }
     
     func minimumElement(current: inout Node?) -> Node? {
@@ -110,9 +119,30 @@ class Tree: NSObject {
     }
     
     /*
-     Logic: We need to find the a node by iterating the tree, with data same as data to be deleted.
-     There can three scenario, data is equal, smaller or greater than the current node.
-    */
+     To delete, first we need to find the node which has the same data, by iterating the tree.
+     There can be three scenarios while iterating, data is equal, smaller or greater.
+     If data is smaller, then we will probably find that node in left side.
+     If data is greater, then we will probably find that node in right side.
+     If data is same, then simply we cannot delete, we still need to do some operation. There can be children of this node,
+        and if you simply delete that node by assigning nil then all of it's children will be lost. Also binary tree has a rule..
+        data of left child should be smaller and data of right child should be greater than the parent node.
+     If data is same and it is a leaf node(a node with no children), then just delete by assigning nil and you're done.
+     If data is same and it has one child on left, then make that child as parent by replacing and you're done.
+     If data is same and it has one child on right, then make that child as parent by replacing and you're done.
+     If data is same and it has both the children, then find a node with smallest data on right side, assign it's data to
+         current node then delete that smallest node.
+         Q.Why smallest?
+         Ans: Two reasons.
+            1.Smallest will always be leaf node, then it becomes easy to delete. just assign nil.
+            2. Right chlid's value will be greater than this one, which is rule for binary tree.
+         Q.Why only on right side? why not left?
+         Ans: Because if you make smallest node of left side as parent, then left child's value may be greater which is against rule.
+         Q. Why replace data?
+         Ans: By replacing data we keep it's references, which is with it's children and parent. Also after assigning data
+             we get a leaf node to delete which is simple.
+         Q.Why don't you assign nil immdeiately after replacing? Why recursion again?
+         Ans: Just to avoid duplicate code, we have already written a line to delete a node.
+     */
     func delete(current: inout Node?, data: Int)  {
         // If root node is null then nothing to delete.
         if let node = current {
@@ -123,19 +153,19 @@ class Tree: NSObject {
             }else{
                 if node.left == nil && node.right == nil{
                     current = nil
-                }else if node.left == nil {
-                    current = node.right
-                }else if node.right == nil {
+                }else if node.left != nil {
                     current = node.left
+                }else if node.right != nil {
+                    current = node.right
                 }else{
-                    let data = minimumElement(current: &node.right)?.data
-                    current?.data = data
-                    delete(current: &node.right, data: data!)
+                    let minData = minimumElement(current: &node.right)?.data
+                    current?.data = minData
+                    delete(current: &node.right, data: minData!)
                 }
             }
         }
     }
-    
+
     
     
     
