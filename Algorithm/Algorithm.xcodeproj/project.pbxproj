@@ -15,6 +15,7 @@
 		23F548FD20F900FC00C174BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F548FB20F900FC00C174BC /* LaunchScreen.storyboard */; };
 		23F5491320F9018700C174BC /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5491220F9018700C174BC /* SelectionSort.swift */; };
 		23F5491520F9018D00C174BC /* SelectionSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5491420F9018D00C174BC /* SelectionSortTests.swift */; };
+		23FAE0F62278C43600B8819E /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAE0F52278C43600B8819E /* GraphTests.swift */; };
 		E01408FE210CF19200B3CF03 /* TreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01408FD210CF19200B3CF03 /* TreeTests.swift */; };
 		E09B95192109090D004D5871 /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09B95182109090D004D5871 /* StackTests.swift */; };
 		E0A729E720FD264B00A88E75 /* MergeSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A729E620FD264B00A88E75 /* MergeSortTests.swift */; };
@@ -62,6 +63,7 @@
 		23F5490920F900FD00C174BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F5491220F9018700C174BC /* SelectionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		23F5491420F9018D00C174BC /* SelectionSortTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSortTests.swift; sourceTree = "<group>"; };
+		23FAE0F52278C43600B8819E /* GraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTests.swift; sourceTree = "<group>"; };
 		E01408FD210CF19200B3CF03 /* TreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTests.swift; sourceTree = "<group>"; };
 		E09B95182109090D004D5871 /* StackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		E0A729E620FD264B00A88E75 /* MergeSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSortTests.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				23927737210A045C000B3C44 /* QueueTests.swift */,
 				E0CA1B93210BB3EC00AC19A2 /* LinkedListTests.swift */,
 				E01408FD210CF19200B3CF03 /* TreeTests.swift */,
+				23FAE0F52278C43600B8819E /* GraphTests.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 					};
 					23F5490220F900FC00C174BC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 23F548EE20F900FC00C174BC;
 					};
@@ -328,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A729E720FD264B00A88E75 /* MergeSortTests.swift in Sources */,
+				23FAE0F62278C43600B8819E /* GraphTests.swift in Sources */,
 				E0CA1B94210BB3EC00AC19A2 /* LinkedListTests.swift in Sources */,
 				E0A729FB20FD289000A88E75 /* BubbleSortTests.swift in Sources */,
 				23F5491520F9018D00C174BC /* SelectionSortTests.swift in Sources */,
@@ -514,11 +519,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AlgorithmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fjkdfner.AlgorithmTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Algorithm.app/Algorithm";
@@ -530,6 +537,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AlgorithmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

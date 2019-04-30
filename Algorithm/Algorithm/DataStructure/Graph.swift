@@ -6,6 +6,28 @@
 //  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
+/********** INTRODUCTION **************
+ A Graph is a non-linear data structure consisting of nodes and edges. Edges connect two nodes.
+ Every edge have weight, source and destination.
+ One node can have multiple edges connected to it.
+ Adjacenct − Two nodes are adjacent if they are connected to each other through an edge. A---B
+ Use Case: Computer networks, social networks, Map etc.
+ A graph can be directed or undirected.
+ Dircted Graph: When nodes are connected in only one way and can be traversed in single direction..like O----O----O
+ Undircted Graph: When nodes are connected with multiple nodes and can be traversed in multiple direction.
+ Refer: https://www.mathworks.com/help/matlab/math/directed-and-undirected-graphs.html
+ To travarse or search in Graph, there are two approaches followed.
+    1. Breadth First Search
+        -- As the name suggests we will traverse nodes in breadth or horizonatlly.
+        -- Need a queue to do this opeartion.
+        -- Refer: https://www.tutorialspoint.com/data_structures_algorithms/breadth_first_traversal.htm
+    2. Depth First Search
+        -- As the name suggests we will traverse nodes in depth or vertically.
+        -- Need a stack to do this opeartion.
+        -- Refer: https://www.tutorialspoint.com/data_structures_algorithms/depth_first_traversal.htm
+ ********** INTRODUCTION **************/
+
+
 import UIKit
 
 class Graph: NSObject {
@@ -41,8 +63,6 @@ class Graph: NSObject {
             let edge = Edge.create(source: self, destination: destination, weight: weight)
             self.edges.append(edge)
             return edge
-            //                let destEdge = Edge.create(source: destination, destination: self, weight: weight)
-            //                destination.edges.append(destEdge)
         }
         
         func removeEdge(data: Int) {
