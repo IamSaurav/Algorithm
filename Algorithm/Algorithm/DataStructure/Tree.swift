@@ -10,6 +10,8 @@
  Tree is a non-linear data structure, because it's nodes connects to multile node.
  In general tree each node can have infinite number of children.
  In Binary tree each node has at most two nodes left and right, we have implemented binary tree below.
+ Left child node must be smaller than parent node.
+ Right child node must be greater than parent node.
  The topmost node is called root of the tree.
  The nodes directly connected called its children.
  Use case-file system on a computer.
@@ -153,10 +155,10 @@ class Tree: NSObject {
             }else{
                 if node.left == nil && node.right == nil{
                     current = nil
-                }else if node.left != nil {
-                    current = node.left
-                }else if node.right != nil {
+                }else if node.left == nil {
                     current = node.right
+                }else if node.right == nil {
+                    current = node.left
                 }else{
                     let minData = minimumElement(current: &node.right)?.data
                     current?.data = minData
