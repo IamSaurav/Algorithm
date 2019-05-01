@@ -85,6 +85,31 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(node4.edges.first?.weight, 3)
         XCTAssertEqual(node2.edges[2].weight, 2)
     }
+    
+    func testBFS() {
+        let rootNode = Graph.Node.create(data: 100, edges: [])
+        let graph = Graph.create(rootNode: rootNode)
+        let node0 = Graph.Node.create(data: 0, edges: [])
+        let node1 = Graph.Node.create(data: 1, edges: [])
+        graph.addEdge(source: rootNode, destination: node0, weight: 1)
+        graph.addEdge(source: rootNode, destination: node1, weight: 1)
+        let node2 = Graph.Node.create(data: 2, edges: [])
+        let node3 = Graph.Node.create(data: 3, edges: [])
+        graph.addEdge(source: node1, destination: node2, weight: 2)
+        graph.addEdge(source: node1, destination: node3, weight: 2)
+        graph.addEdge(source: node2, destination: node3, weight: 3)
+        let node4 = Graph.Node.create(data: 4, edges: [])
+        let node5 = Graph.Node.create(data: 5, edges: [])
+        graph.addEdge(source: node2, destination: node4, weight: 2)
+        graph.addEdge(source: node2, destination: node5, weight: 2)
+        graph.addEdge(source: node3, destination: node4, weight: 3)
+        graph.addEdge(source: node4, destination: node5, weight: 3)
+        graph.addEdge(source: node4, destination: node2, weight: 4)
+        graph.addEdge(source: node5, destination: rootNode, weight: 100)
+        
+        graph.doBreadthFirstSearch(node: node5)
+        
+    }
 
     func testPerformanceExample() {
         self.measure {

@@ -50,6 +50,7 @@ class Graph: NSObject {
     public class Node: NSObject {
         var data: Int!
         var edges: [Edge] = []
+        var isVisited: Bool!
         
         public class func create(data: Int, edges: [Edge]) -> Node {
             let node = Node.init()
@@ -107,26 +108,26 @@ class Graph: NSObject {
         return source.addEdge(weight: weight, destination: destination)
     }
     
-//    // First move horizontally and visit all the nodes of the current layer then move to the next layer
-//    @discardableResult
-//    func doBreadthFirstSearch() -> [Node]? {
-//        var visited = [Node]()
-//        let queue = Queue.init()
-//        visited.append(root!)
-//        queue.enqueue(data: root!)
-//        while queue.size > 0 {
-//            if let top = queue.poll() as? Node {
-//                print("Polled Data", top.data)
-//                top.edges.forEach({ edge in
-//                    if !visited.contains(edge.destination!) {
-//                        visited.append(edge.destination!)
-//                        queue.enqueue(data: edge.destination!)
-//                    }
-//                })
-//            }
-//        }
-//        return visited
-//    }
+    // First move horizontally and visit all the nodes of the current layer then move to the next layer
+    @discardableResult
+    func doBreadthFirstSearch(node: Node) -> [Node]? {
+        var visited = [Node]()
+        let queue = GenericQueue.init()
+        visited.append(node)
+        queue.enque(data: node)
+        while queue.size > 0 {
+            if let top = queue.deque() as? Node {
+                print("Polled Data", top.data)
+                top.edges.forEach({ edge in
+                    if !visited.contains(edge.destination!) {
+                        visited.append(edge.destination!)
+                        queue.enque(data: edge.destination!)
+                    }
+                })
+            }
+        }
+        return visited
+    }
 //
 //    // It navigates from one node to it's adjacent one unvisited node and find again  one unvisited node and so on.
 //    // First move vertically and visit till it finds the node or reaches a leaf node
