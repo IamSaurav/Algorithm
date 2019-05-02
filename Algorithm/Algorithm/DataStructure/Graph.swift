@@ -31,9 +31,8 @@
 import UIKit
 
 class Graph: NSObject {
-    var root: Node?
-    public var isUndirected: Bool = true
-    
+    private(set) var root: Node?
+
     public class Edge: NSObject {
         var weight: Int?
         var source: Node?
@@ -117,7 +116,7 @@ class Graph: NSObject {
         queue.enque(data: node)
         while queue.size > 0 {
             if let top = queue.deque() as? Node {
-                print("Polled Data", top.data)
+                print(top.data)
                 top.edges.forEach({ edge in
                     if !visited.contains(edge.destination!) {
                         visited.append(edge.destination!)
@@ -128,27 +127,54 @@ class Graph: NSObject {
         }
         return visited
     }
-//
-//    // It navigates from one node to it's adjacent one unvisited node and find again  one unvisited node and so on.
-//    // First move vertically and visit till it finds the node or reaches a leaf node
-//    @discardableResult
-//    func doDepthFirstSearch() -> [Node]? {
-//        var visited = [Node]()
-//        let stack = Stack.init()
-//        visited.append(root!)
-//        stack.push(data: root!)
-//        while !stack.isEmpty() {
-//            if let top = stack.peek() as? Node {
-//                stack.pop()
-//                print("Polled Data", top.data)
-//                top.edges.forEach({ edge in
-//                    if !visited.contains(edge.destination!) {
-//                        visited.append(edge.destination!)
-//                        stack.push(data: edge.destination!)
-//                    }
-//                })
-//            }
-//        }
-//        return visited
-//    }
+
+    // It navigates from one node to it's adjacent one unvisited node and find again  one unvisited node and so on.
+    // First move vertically and visit till it finds the node or reaches a leaf node
+    @discardableResult
+    func doDepthFirstSearch(node: Node) -> [Node]? {
+        var visited = [Node]()
+        let stack = GenericStack.init()
+        visited.append(node)
+        stack.push(data: node)
+        while !stack.isEmpty() {
+            if let top = stack.pop() as? Node {
+                print(top.data)
+                top.edges.forEach({ edge in
+                    if !visited.contains(edge.destination!) {
+                        visited.append(edge.destination!)
+                        stack.push(data: edge.destination!)
+                    }
+                })
+            }
+        }
+        return visited
+    }
+    
+    // It is depth first search and on top of that all we do is check if any visited node we come accross,
+    // that means there is a cycle.
+    // eg.1.  A connected to B and B connected to C then C connected to A
+    // eg.1.  A connected to B and B connected to A. It is also called back edge.
+    func isCyclic(node: Node) -> Bool {
+        var isCyclic = false
+        var visited = [Node]()
+        let stack = GenericStack.init()
+        visited.append(node)
+        stack.push(data: node)
+        while !stack.isEmpty() {
+            if let top = stack.pop() as? Node {
+                print(top.data)
+                top.edges.forEach({ edge in
+                    if !visited.contains(edge.destination!) {
+                        visited.append(edge.destination!)
+                        stack.push(data: edge.destination!)
+                    }else{
+                        isCyclic = true
+                    }
+                })
+            }
+        }
+        return isCyclic
+    }
+    
+    
 }

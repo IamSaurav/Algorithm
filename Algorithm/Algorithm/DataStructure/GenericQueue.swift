@@ -6,6 +6,11 @@
 //  Copyright © 2019 com.fsfes.frewfer. All rights reserved.
 //
 
+/********** INTRODUCTION **************
+ It is same as the Queue class implementation, just it takes AnyObject as data and not Int.
+ Implemented this for Graph. That Stack keep it simple with only Int as data.
+ ********** INTRODUCTION **************/
+
 import UIKit
 
 class GenericQueue {
