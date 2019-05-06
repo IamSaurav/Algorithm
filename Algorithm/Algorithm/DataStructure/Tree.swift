@@ -71,7 +71,6 @@ class Tree: NSObject {
          root = current
          return current?.data
          */
-        
         delete(current: &root, data: data)
         return data
     }

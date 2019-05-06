@@ -6,22 +6,61 @@
 //  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
+/*
+ Selection Sort:
+ It starts by selecting the first element and then keeps comparing it with next element till it reaches last.
+ While comparing if it finds any element, smaller than the selected one, then it will keep the index of that element..
+ and for next comarisions it usage the value of this index until it finds even smaller element.
+ At the end, it will find the samllest element and swap it with the selected element.
+ By doing this we get smallest item in every iteration and we keep those in the left side of the array.
+ After every iteration it starts from next element of the last selected one.
+ Which means it keep reducing the number of elements from which it gets the smallest element.
+ As you saw this approach, selects an element and compare with others thus the name Selection Sort.
+ 
+ Summary: finds smallest element and moves it left. It keeps track of index of smaller element & doesn't swap until gets smallest.
+ 
+ Example below.
+ 
+ arr[] = 64 25 12 22 11
+
+ // Find the minimum element in arr[0...4]
+ // Find the minimum element and place it in sorted array.
+ 11    25 12 22 64
+
+ // Find the minimum element in arr[1...4]
+ // Find the minimum element and place it in sorted array.
+ 11 12   25 22 64
+
+ // Find the minimum element in arr[2...4]
+ // Find the minimum element and place it in sorted array.
+ 11 12 22   25 64
+
+ // Find the minimum element and place it in sorted array.
+ 11 12 22 25 64
+*/
+
 import UIKit
 
 public class SelectionSort {
     
     public func selectionSort<T: Comparable> (_ arr: [T]) -> [T] {
+        // Need to modify so created a variable copy.
         var arr = arr
+        // This loop used for selection of element, it starts selecting item from start to end.
         for i in 0..<arr.count {
-            var swapIndex = i
+            // Initially we take i'th element as selected element for comparision but later when we smaller element we make it as selected element. Actually we keep track of the index of element and not the exact element.
+            var selectedItemIndex = i
+            // This loop used for comparing and finding smallest element in rest of the array(next of selected element.. to last).
+            // As soon as we get a smaller element than the selected one we make that as the selected element.
             for j in i+1..<arr.count{
-                if arr[j] < arr[swapIndex]{
-                    swapIndex = j
+                if arr[j] < arr[selectedItemIndex]{
+                    selectedItemIndex = j
                 }
             }
-            let temp = arr[swapIndex]
-            arr[swapIndex] = arr[i]
-            arr[i] = temp
+            // At the point we got smallest element. Now we will exchange it with initally selected element.
+            let temp = arr[i]
+            arr[i] = arr[selectedItemIndex]
+            arr[selectedItemIndex] = temp
         }
         return arr
     }

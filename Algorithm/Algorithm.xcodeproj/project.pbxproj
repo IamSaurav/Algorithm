@@ -168,12 +168,12 @@
 		E0A729EA20FD26AD00A88E75 /* Sorting */ = {
 			isa = PBXGroup;
 			children = (
+				E0A729F820FD287A00A88E75 /* BubbleSort.swift */,
 				23F5491220F9018700C174BC /* SelectionSort.swift */,
+				E0A729ED20FD26CC00A88E75 /* InsertionSort.swift */,
 				E0A729E820FD26A300A88E75 /* MergeSort.swift */,
 				E0A729EB20FD26C100A88E75 /* HeapSort.swift */,
-				E0A729ED20FD26CC00A88E75 /* InsertionSort.swift */,
 				E0A729EF20FD270F00A88E75 /* QuickSort.swift */,
-				E0A729F820FD287A00A88E75 /* BubbleSort.swift */,
 			);
 			path = Sorting;
 			sourceTree = "<group>";
@@ -182,11 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				23F5491420F9018D00C174BC /* SelectionSortTests.swift */,
-				E0A729E620FD264B00A88E75 /* MergeSortTests.swift */,
+				E0A729FA20FD289000A88E75 /* BubbleSortTests.swift */,
 				E0A729F120FD27A500A88E75 /* InsertionSortTests.swift */,
+				E0A729E620FD264B00A88E75 /* MergeSortTests.swift */,
 				E0A729F320FD27B200A88E75 /* QuickSortTests.swift */,
 				E0A729F520FD27BD00A88E75 /* HeapSortTests.swift */,
-				E0A729FA20FD289000A88E75 /* BubbleSortTests.swift */,
 			);
 			path = Sorting;
 			sourceTree = "<group>";
