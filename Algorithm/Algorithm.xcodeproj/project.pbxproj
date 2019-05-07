@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
+		23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C59F5E2281BF1C003E4648 /* AVLTree.swift */; };
 		23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2D1A227AC7B300B45746 /* GenericStack.swift */; };
 		23F548F320F900FC00C174BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F220F900FC00C174BC /* AppDelegate.swift */; };
 		23F548F520F900FC00C174BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F420F900FC00C174BC /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
+		23C59F5E2281BF1C003E4648 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
 		23EE2D1A227AC7B300B45746 /* GenericStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericStack.swift; sourceTree = "<group>"; };
 		23F548EF20F900FC00C174BC /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F548F220F900FC00C174BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23C59F602281BF20003E4648 /* AdvancedDataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				23C59F5E2281BF1C003E4648 /* AVLTree.swift */,
+			);
+			path = AdvancedDataStructure;
+			sourceTree = "<group>";
+		};
 		23F548E620F900FC00C174BC = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 				23F548F920F900FC00C174BC /* Assets.xcassets */,
 				23F548FB20F900FC00C174BC /* LaunchScreen.storyboard */,
 				23F548FE20F900FC00C174BC /* Info.plist */,
+				23C59F602281BF20003E4648 /* AdvancedDataStructure */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -332,6 +343,7 @@
 				E0A72A0520FD2C5600A88E75 /* Tree.swift in Sources */,
 				E0A729EC20FD26C100A88E75 /* HeapSort.swift in Sources */,
 				E0A729F920FD287A00A88E75 /* BubbleSort.swift in Sources */,
+				23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
