@@ -166,6 +166,46 @@ class Tree: NSObject {
             }
         }
     }
+    
+    
+    /*
+     In Order Traversal first prints left then root then right.
+     nodes: this parameter is not important, I have just used to return the data for unit test.
+    */
+    func inOrderTraverse(n: Node?, nodes: inout [Int]){
+        if let node = n {
+            inOrderTraverse(n: node.left, nodes: &nodes)
+            print(node.data)
+            nodes.append(node.data)
+            inOrderTraverse(n: node.right, nodes: &nodes)
+        }
+    }
+
+    /*
+     In Order Traversal first prints root then left then right.
+     nodes: this parameter is not important, I have just used to return the data for unit test.
+     */
+    func preOrderTraverse(n: Node?, nodes: inout [Int]){
+        if let node = n {
+            print(node.data)
+            nodes.append(node.data)
+            preOrderTraverse(n: node.left, nodes: &nodes)
+            preOrderTraverse(n: node.right, nodes: &nodes)
+        }
+    }
+    
+    /*
+     Post Order Traversal first prints left then right then root.
+     nodes: this parameter is not important, I have just used to return the data for unit test.
+     */
+    func postOrderTraverse(n: Node?, nodes: inout [Int]){
+        if let node = n {
+            postOrderTraverse(n: node.left, nodes: &nodes)
+            postOrderTraverse(n: node.right, nodes: &nodes)
+            print(node.data)
+            nodes.append(node.data)
+        }
+    }
 
     
     

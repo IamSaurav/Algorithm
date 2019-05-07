@@ -55,6 +55,42 @@ class TreeTests: XCTestCase {
         }
     }
     
+    func testInOrderTraversal() {
+        let tree = Tree.init()
+        tree.insert(data: 10)
+        tree.insert(data: 7)
+        tree.insert(data: 20)
+        var nodes: [Int] = [Int].init()
+        tree.inOrderTraverse(n: tree.root, nodes: &nodes)
+        XCTAssertEqual(nodes.first, 7)
+        XCTAssertEqual(nodes[1], 10)
+        XCTAssertEqual(nodes[2], 20)
+    }
+    
+    func testPreOrderTraversal() {
+        let tree = Tree.init()
+        tree.insert(data: 10)
+        tree.insert(data: 7)
+        tree.insert(data: 20)
+        var nodes: [Int] = [Int].init()
+        tree.preOrderTraverse(n: tree.root, nodes: &nodes)
+        XCTAssertEqual(nodes.first, 10)
+        XCTAssertEqual(nodes[1], 7)
+        XCTAssertEqual(nodes[2], 20)
+    }
+    
+    func testPostOrderTraversal() {
+        let tree = Tree.init()
+        tree.insert(data: 10)
+        tree.insert(data: 7)
+        tree.insert(data: 20)
+        var nodes: [Int] = [Int].init()
+        tree.postOrderTraverse(n: tree.root, nodes: &nodes)
+        XCTAssertEqual(nodes.first, 7)
+        XCTAssertEqual(nodes[1], 20)
+        XCTAssertEqual(nodes[2], 10)
+    }
+        
     func testPerformanceExample() {
         self.measure {
             testDelete()
