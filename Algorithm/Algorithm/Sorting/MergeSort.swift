@@ -11,19 +11,31 @@
  Divide the unsorted list into n sublists, each containing one element (a list of one element is considered sorted).
  Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
  
+ Q: What is the benifit of dividing input array into single element subarrays? anyway you get to compare while merging back.
+ Ans: This is a divide and conquer algorithm, and when you divide the large problem into smaller ones it actually reduces
+      efort. Though I agree that in some cases merge sort or in general divide and conquer perform really bad.
+ 
  Q: What is Merge?
  Ans: Merge is an algorithm, it plays a critical role in the merge sort algorithm.
-      It recursively divide the list into sublists of (roughly) equal length, until each sublist contains only one element.
-      A list containing a single element is, by definition, sorted.
-      Repeatedly merge sublists to create a new sorted sublist until the single list contains all elements.
-      The single list is the sorted list.
+      It recursively divide the list into sublists, until each sublist contains only one element. A list containing a single element is, by definition, sorted.
+      Then repeatedly merge sublists to create a new sorted sublist until the single list contains all elements.
+      The single list is then sorted list.
  
- Q: How do you sort while merging back 2 or more elements?
+ Q: Merging array with 1 element is easy! How do you merge array with 2 or more elements?
  Ans: It is an approach explained below.
-      [1 5 6]  [0 2 4]
-      1. We will compare these two array elements, by incrasing the counter. We use i for first array, j for second array
-      and k to keep the sorted elements.
-      2. First we will check if arr[i] < arr[j]
+      Let's say we're merging [1 5 6]  [0 2 4]
+      We will compare elements of these two array and will get sorted array.
+      We use i as counter for first array, j for second array and k for a temp array to keep the sorted elements.
+      First we will check which one of arr[i] < arr[j] is smaller, we will take that element.
+      Here between 1 & 0, 0 is smaller, so will increase the counter j because we took element from that array.
+          Now copy this item to temp array with counter k.
+      Then between 1 & 2, 1 is smaller, so will increase the counter i because we took element from this array.
+          Now copy this item to temp array with counter k.
+      Then between 5 & 4, 4 is smaller, so will increase the counter j because we took element from that array.
+          Now copy this item to temp array with counter k.
+      Now the second array is exhausted so will stop this comparision and copy rest of the items lying in first array..
+      towards the end of sorted array
+      This is how we merge back.
  
  Description:
  Merge Sort is a Divide and Conquer algorithm.
@@ -41,7 +53,7 @@ class MergeSort: NSObject {
     }
     
     /*
-     arr: We modify input array thus inout.
+     arr: Input array, we modify input array thus inout.
      low: Starting index called as low.
      high: Last or Max index called as high.
     */
@@ -63,18 +75,19 @@ class MergeSort: NSObject {
         var i = low
         var k = low
         var j = mid + 1
-        // This loop picks the smaller item amongst the two subarrays.
+        // This loop picks the smaller item amongst the two subarrays and gives a sorted array.
         // eg [1 5 6]  [0 2 4]
-        // To sort here we need three counters, i for first array, j for second array and k to keep the sorted items.
+        // To sort here we are going to use three counters, i for first array, j for second array and k to keep the sorted items.
         // 1 > 0, thus it will take 0 and place it in the sorted array. Also it will increase the counter only whose item got picked here j.
         // Steps:
         // 1 > 0         arr[k] = 0 j+=1 k+1
         // 1 < 2         arr[k] = 1 i+=1 k+1
         // 5 > 4         arr[k] = 4 i+=1 k+1
-        // Now second list exhausted so will copy rest of the items of first list towards the end.
+        // Now second list is exhausted, so will copy rest of the items of first list towards the end.
         // arr[k] = 6 i+=1 k+1
-        // Q: Why arr[k] ?
-        // Ans: Once we got the place of elements it belongs, we place it there in input array.
+        // Q: Why arr[k] is being modified in the process? Aren't we gonna loose data?
+        // Ans: No we won't loose data, becuase we have already copied to temp array.
+        // Once we got the place of elements it belongs, we just place it there in input array.
         while i <= mid && j <= high {
             if tempArr[i] <= tempArr[j]{
                 arr[k] = tempArr[i]
@@ -99,6 +112,8 @@ class MergeSort: NSObject {
             j += 1
         }
     }
+    
+    
     
     
 }
