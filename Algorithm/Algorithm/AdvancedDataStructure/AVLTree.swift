@@ -35,6 +35,31 @@ class AVLTree: NSObject {
         }
     }
     
+    /*
+     When the node is left imbalanced, we rotate towards right.
+    */
+    func rightRotation(node: inout Node?) -> Node? {
+        let left = node?.left
+        let rightOfLeft = left?.right
+        left?.right = node
+        // Sometime what happens root node may have some right nodes,
+        node?.left = rightOfLeft
+        
+        // ToDo Update heights
+        node?.height = (node?.left?.height ?? 0) > (node?.right?.height ?? 0) ? node?.left?.height : node?.right?.height
+        left?.height = (node?.left?.height ?? 0) > (node?.right?.height ?? 0) ? node?.left?.height : node?.right?.height
+        return left
+    }
+    
+    /*
+     When the node is right imbalanced, we rotate towards left.
+     */
+    func leftRotation(node: inout Node?) {
+        
+    }
+    
+    
+    
     
     func insert(node: inout Node?, data:Int)
     {
