@@ -37,41 +37,122 @@ class AVLTree: NSObject {
     
     /*
      When the node is left imbalanced, we rotate towards right.
+           X
+          /
+        Y
+      /
+     Z
+     Steps:
+     1. Set right link of left node of current node as current node.
+     2. Set left link of current node as right node of left node of current node.
+     Why? In some cases there may be right node of Y which we have to take care.
+     And if we assign left node of current node as Right node of Y rule wise there will not be any problem,
+     because value of X will be greater anyway.
     */
-    func rightRotation(node: inout Node?) -> Node? {
+    @discardableResult
+    func rightRotation(node: Node?) -> Node? {
+        // We need to keep the reference of these nodes, because while replacing we loose reference.
         let left = node?.left
-        let rightOfLeft = left?.right
-        left?.right = node
-        // Sometime what happens root node may have some right nodes,
+        let rightOfLeft = node?.left?.right
+        
+        // Actual right-rotation happens here.
+        node?.left?.right = node
         node?.left = rightOfLeft
         
-        // ToDo Update heights
-        node?.height = (node?.left?.height ?? 0) > (node?.right?.height ?? 0) ? node?.left?.height : node?.right?.height
-        left?.height = (node?.left?.height ?? 0) > (node?.right?.height ?? 0) ? node?.left?.height : node?.right?.height
+        // We need to update the height after rotation, it's height has to increase by 1 plus it's child's height
+        node?.height = greaterHeight(node: node) + 1
+        node?.left?.height = greaterHeight(node: node?.left) + 1
         return left
     }
     
     /*
-     When the node is right imbalanced, we rotate towards left.
+     When the node is rigt imbalanced, we rotate towards left.
+      X
+       \
+        Y
+        \
+         Z
+     Steps:
+     1. Set left link of left node of current node as current node.
+     2. Set right link of current node as left node of right node of current node.
+     Why? In some cases there may be right node of Y which we have to take care.
+     And if we assign left node of current node as left node of Y rule wise there will not be any problem,
+     because value of X will be greater anyway.
      */
-    func leftRotation(node: inout Node?) {
+    @discardableResult
+    func leftRotation(node: Node?) -> Node? {
+        // We need to keep the reference of these nodes, because while replacing we loose references.
+        let right = node?.right
+        let leftOfRight = node?.right?.left
         
+        // Actual left-rotation happens here.
+        right?.left = node
+        node?.right = leftOfRight
+        
+        // We need to update the height after rotation, it's height has to increase by 1 plus it's child's height
+        node?.height = greaterHeight(node: node) + 1
+        right?.height = greaterHeight(node: right) + 1
+        return right
     }
     
+    func greaterHeight(node: Node?) -> Int {
+        // Don't worry about ?? swift asks to set a default value incase any optional is null.
+        let leftHeight: Int = node?.left?.height ?? 0
+        let rightHeight: Int = node?.right?.height ?? 0
+        return leftHeight > rightHeight ? leftHeight : rightHeight
+    }
     
+    func insert(data:Int) {
+      insert(node: &root, data: data)
+    }
     
-    
-    func insert(node: inout Node?, data:Int)
-    {
-        if let current = node{
+    func insert(node: inout Node?, data:Int) {
+        if let current = node {
+            if data < current.data {
+                insert(node: &current.left, data: data)
+            }else if data > current.data {
+                insert(node: &current.right, data: data)
+            }else{
+                return // If the same data available then just return, because duplicate keys not allowed
+            }
             
+            // After inserting, height needs to be updated.
+            node?.height = greaterHeight(node: node) + 1
             
+            // Now we need to check the balance factor of new node.
+            // If it is not balanced then we will have to rotate to make it balanced.
+            let balance = balanceFactor(node: node)
             
+            // balance facotor = left height - right height
+            // > 1 means left branch is bigger.
+            //
+            if balance > 1 && data < (current.left?.data ?? 0) {
+                node = rightRotation(node: node)
+                return
+            }
+            // > 1 means left branch is bigger.
+            //
+            if balance > 1 && data > (current.left?.data ?? 0) {
+                node?.left = leftRotation(node: current.left)
+                node = rightRotation(node: node)
+                return
+            }
+            // < -1 means right branch is bigger.
+            //
+            if balance < -1 && data > (current.left?.data ?? 0) {
+                node = leftRotation(node: node)
+                return
+            }
+            // < -1 means right branch is bigger.
+            //
+            if balance < -1 && data < (current.right?.data ?? 0) {
+                node?.right = rightRotation(node: current.right)
+                node = leftRotation(node: node)
+                return
+            }
         }else{
             node = Node.create(left: nil, right: nil, data: data, height: 1)
         }
-        
-    
     }
     
     /*

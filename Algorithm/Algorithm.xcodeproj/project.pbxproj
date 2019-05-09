@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235FE3DC228451FB00F29360 /* AVLTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FE3DB228451FB00F29360 /* AVLTreeTests.swift */; };
 		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
 		23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C59F5E2281BF1C003E4648 /* AVLTree.swift */; };
 		23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2D1A227AC7B300B45746 /* GenericStack.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		235FE3DB228451FB00F29360 /* AVLTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTreeTests.swift; sourceTree = "<group>"; };
 		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		23C59F5E2281BF1C003E4648 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
 		23EE2D1A227AC7B300B45746 /* GenericStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericStack.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		235FE3DD228451FE00F29360 /* Advanced DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				235FE3DB228451FB00F29360 /* AVLTreeTests.swift */,
+			);
+			path = "Advanced DataStructure";
+			sourceTree = "<group>";
+		};
 		23C59F602281BF20003E4648 /* AdvancedDataStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +170,7 @@
 				23F5490920F900FD00C174BC /* Info.plist */,
 				E0A729F720FD27C700A88E75 /* Sorting */,
 				E09B951A21090913004D5871 /* DataStructure */,
+				235FE3DD228451FE00F29360 /* Advanced DataStructure */,
 			);
 			path = AlgorithmTests;
 			sourceTree = "<group>";
@@ -362,6 +373,7 @@
 				E01408FE210CF19200B3CF03 /* TreeTests.swift in Sources */,
 				E0A729F620FD27BD00A88E75 /* HeapSortTests.swift in Sources */,
 				E0A729F420FD27B200A88E75 /* QuickSortTests.swift in Sources */,
+				235FE3DC228451FB00F29360 /* AVLTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
