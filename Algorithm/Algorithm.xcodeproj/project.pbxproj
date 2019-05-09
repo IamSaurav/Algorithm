@@ -153,13 +153,13 @@
 			children = (
 				E0A729EA20FD26AD00A88E75 /* Sorting */,
 				E0A72A0820FD2C6300A88E75 /* DataStructure */,
+				23C59F602281BF20003E4648 /* AdvancedDataStructure */,
 				23F548F220F900FC00C174BC /* AppDelegate.swift */,
 				23F548F420F900FC00C174BC /* ViewController.swift */,
 				23F548F620F900FC00C174BC /* Main.storyboard */,
 				23F548F920F900FC00C174BC /* Assets.xcassets */,
 				23F548FB20F900FC00C174BC /* LaunchScreen.storyboard */,
 				23F548FE20F900FC00C174BC /* Info.plist */,
-				23C59F602281BF20003E4648 /* AdvancedDataStructure */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";

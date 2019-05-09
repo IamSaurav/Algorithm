@@ -6,6 +6,83 @@
 //  Copyright © 2019 com.fsfes.frewfer. All rights reserved.
 //
 
+/*
+ Introduction:
+ AVL tree is a self-balancing binary search tree.
+ Rules:
+ (a) The difference of heights of the two child of any node should be at most one.
+     When they differ by more than one, rebalancing is done to restore balancing.
+     balance = height of left branch - height of right branch
+     So, if difference is -1, 0 and 1 the node is called balanced
+     Example 1:
+          X
+        /
+       Y
+      /
+     Z
+     balance of X = 2 - 0 = 2
+     balance of Y = 1 - 0 = 1
+     balance of Z = 0 - 0 = 0
+     Example 2:
+     X
+      \
+       Y
+      /  \
+     Z    X1
+           \
+            X2
+ balance X = 0 - 3 = -3
+ balance Y = 1 - 2 = -1
+ balance Z = 0 - 0 = 0
+ balance X1 = 0 - 1 = -1
+ balance X2 = 0 - 0 = 0
+ 
+ (b) Can't insert duplicate values.
+ (c) A node can have at max two child nodes
+ (d) Value of left node should be smaller than value of the parent node. Which is same as binary tree.
+ (e) Value of right node should be greater than value of the parent node. Which is same as binary tree.
+ 
+ Q: Why AVL Tree? When we have binary search tree.
+ Ans: The time complexity for searching an element in AVL tree is much better compared to binary search tree gets worst.
+      Time complexity of an AVL tree is O(h) where h is height of tree.
+      Let's say we will have to search a 20 in below tree, we will have to take 3 steps to get there.
+      7
+       \
+        10
+       /  \
+      8   15
+           \
+            20
+ 
+     Let's convert this tree into a AVL tree and see if time complexity reduces.
+     10
+     / \
+    8   15
+   /     \
+  7      20
+  Now let's see how many steps to get node with value 20.
+  20 is >10 so we will find in the right side, if we couldn't find in this step we will further search in it's child node.
+  In next search we get the matching value of 20. So, it took 2 steps to search. This difference becomes significant in larger trees.
+ 
+ 
+ Extra Note (Can be ignored):
+ -------------------------------------------------------------
+ 7
+  \
+   10
+    \
+     15
+ This kind of tree called Right Skewed Tree
+ 
+ -------------------------------------------------------------
+      7
+     /
+    6
+   /
+  5
+ This kind of tree called Left Skewed Tree.
+ */
+
 import UIKit
 
 class AVLTree: NSObject {
@@ -37,11 +114,11 @@ class AVLTree: NSObject {
     
     /*
      When the node is left imbalanced, we rotate towards right.
-     X
-     /
-     Y
-     /
-     Z
+          X
+         /
+        Y
+       /
+      Z
      Steps:
      1. Set right link of left node of current node as current node.
      2. Set left link of current node as right node of left node of current node.
@@ -68,10 +145,10 @@ class AVLTree: NSObject {
     /*
      When the node is rigt imbalanced, we rotate towards left.
      X
-     \
-     Y
-     \
-     Z
+      \
+       Y
+        \
+         Z
      Steps:
      1. Set left link of left node of current node as current node.
      2. Set right link of current node as left node of right node of current node.
@@ -94,7 +171,10 @@ class AVLTree: NSObject {
         right?.height = greaterHeight(node: right) + 1
         return right
     }
-    
+    /*
+     Height of any node depends upon it's child node and specifically it depends on the last child of branch.
+     Thus we take and update node's height after some operation like insertion, deletion etc.
+     */
     func greaterHeight(node: Node?) -> Int {
         // Don't worry about ?? swift asks to set a default value incase any optional is null.
         let leftHeight: Int = node?.left?.height ?? 0
@@ -106,6 +186,11 @@ class AVLTree: NSObject {
         insert(node: &root, data: data)
     }
     
+    /*
+     The steps to insert a node in AVL tree is exactly same as Binary Search Tree, except that here we need to follow two extra steps.
+     1. Update the hight of the node.
+     2. Re-balance the tree.
+    */
     func insert(node: inout Node?, data:Int) {
         if let current = node {
             if data < current.data {
@@ -115,12 +200,9 @@ class AVLTree: NSObject {
             }else{
                 return // If the same data available then just return, because duplicate keys not allowed
             }
-            
             // After inserting, height needs to be updated.
             node?.height = greaterHeight(node: node) + 1
-            
             balanceTree(node: &node, data: data)
-            
         }else{
             node = Node.create(left: nil, right: nil, data: data, height: 1)
         }
@@ -142,6 +224,11 @@ class AVLTree: NSObject {
         return data
     }
     
+    /*
+     The steps to delete a node in AVL tree is exactly same as Binary Search Tree, except that here we need to follow two extra steps.
+     1. Update the hight of the node.
+     2. Re-balance the tree.
+     */
     func delete(node: inout Node?, data:Int) {
         if let current = node{
             if data < current.data{
@@ -161,10 +248,8 @@ class AVLTree: NSObject {
                     delete(node: &current.right, data: minimumData!)
                 }
             }
-            
             // After inserting, height needs to be updated.
             node?.height = greaterHeight(node: node) + 1
-            
             balanceTree(node: &node, data: data)
         }
     }
@@ -179,34 +264,92 @@ class AVLTree: NSObject {
         return current
     }
     
+    // Balance factor is explained above.
+    // balance = height of left branch - height of right branch
     func balanceTree(node: inout Node?, data: Int) {
         if let current = node {
-            // Now we need to check the balance factor of new node.
             // If it is not balanced then we will have to rotate to make it balanced.
             let balance = balanceFactor(node: node)
             
-            // balance facotor = left height - right height
-            // > 1 means left branch is bigger.
-            //
+            // > 1 means left branch is bigger than right one. Means this node is left imbalanced and overall it is not an AVL Tree.
+            // Given data (for insertion or deletion) is less than current node's data, that means..
+            // it is a left skewed tree and can be right rotated. Example:
+            //     7
+            //    /
+            //   6
+            //  /
+            // 5
+            //-----After rotation-------
+            //   6
+            //  / \
+            // 5   7
+            // It is called LL(left left) case.
             if balance > 1 && data < (current.left?.data ?? 0) {
                 node = rightRotation(node: node)
                 return
             }
-            // > 1 means left branch is bigger.
-            //
+            // > 1 means left branch is bigger than right one. Means this node is left imbalanced and overall it is not an AVL Tree.
+            // Given data (for insertion or deletion) is greater than current node's data, that means..
+            // there is a node on right side as well, if we try to only right rotate it won't work. We will first left rotate
+            // then right rotate, see the diagram below.
+            //     7
+            //    /
+            //   6
+            //    \
+            //     5
+            //-----First rotation (left rotation)-------
+            //     5
+            //      \
+            //       6
+            //        \
+            //         7
+            //-----Second rotation (right rotation)-------
+            //     6
+            //    / \
+            //   5   7
+            // It is called LR(left right) case.
             if balance > 1 && data > (current.left?.data ?? 0) {
                 node?.left = leftRotation(node: current.left)
                 node = rightRotation(node: node)
                 return
             }
-            // < -1 means right branch is bigger.
-            //
+            // < -1 means right branch is bigger than left one. Means this node is right imbalanced and overall it is not an AVL Tree.
+            // Given data (for insertion or deletion) is greater than current node's data, that means..
+            // it is a right skewed tree and can be left rotated. Example:
+            //     5
+            //      \
+            //       6
+            //        \
+            //         7
+            //-----After rotation-------
+            //   6
+            //  / \
+            // 5   7
+            // It is called RR(right right) case.
             if balance < -1 && data > (current.left?.data ?? 0) {
                 node = leftRotation(node: node)
                 return
             }
-            // < -1 means right branch is bigger.
-            //
+            // < -1 means right branch is bigger than left one. Means this node is right imbalanced and overall it is not an AVL Tree.
+            // Given data (for insertion or deletion) is smaller than current node's data, that means..
+            // there is a node on left side as well, if we try to only left rotate it won't work. We will first right rotate
+            // then left rotate, see the diagram below.
+            //     6
+            //      \
+            //       8
+            //      /
+            //     7
+            //-----First rotation (right rotation)-------
+            //     8
+            //    /
+            //   7
+            //  /
+            // 6
+            //-----Second rotation (left rotation)-------
+            //     7
+            //    / \
+            //   6   8
+            // It is called RL(right left) case.
             if balance < -1 && data < (current.right?.data ?? 0) {
                 node?.right = rightRotation(node: current.right)
                 node = leftRotation(node: node)
@@ -255,6 +398,10 @@ class AVLTree: NSObject {
         }
     }
     
+    /*
+    This method is extra and it has nothing to do with AVL Tree.
+    This is just for practice.
+    */
     func reverseTree(node: Node?) {
         if let current = node{
             let tempNode = node?.right
