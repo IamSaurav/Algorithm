@@ -33,28 +33,46 @@ class AVLTreeTests: XCTestCase {
     }
     
     func testDelete() {
-        let alvTree = AVLTree.init()
-        alvTree.insert(data: 20)
-        alvTree.insert(data: 7)
-        alvTree.insert(data: 10)
-        alvTree.insert(data: 11)
-        alvTree.insert(data: 11)
-        alvTree.insert(data: 8)
-        alvTree.insert(data: 22)
-        alvTree.insert(data: -9)
+        let avlTree = AVLTree.init()
+        avlTree.insert(data: 20)
+        avlTree.insert(data: 7)
+        avlTree.insert(data: 10)
+        avlTree.insert(data: 11)
+        avlTree.insert(data: 11)
+        avlTree.insert(data: 8)
+        avlTree.insert(data: 22)
+        avlTree.insert(data: -9)
         
-        alvTree.delete(data: 7)
-        alvTree.delete(data: -9)
-        alvTree.delete(data: 10)
-        alvTree.delete(data: 8)
-        alvTree.delete(data: 22)
-        alvTree.delete(data: 11)
-        alvTree.delete(data: 11)
-        alvTree.delete(data: 20)
+        avlTree.delete(data: 7)
+        avlTree.delete(data: -9)
+        avlTree.delete(data: 10)
+        avlTree.delete(data: 8)
+        avlTree.delete(data: 22)
+        avlTree.delete(data: 11)
+        avlTree.delete(data: 11)
+        avlTree.delete(data: 20)
         
 //        alvTree.readNodes().forEach { (node) in
 //            print(node.data)
 //        }
+    }
+    
+    func testReverse() {
+        let avlTree = AVLTree.init()
+        avlTree.insert(data: 20)
+        avlTree.insert(data: 7)
+        avlTree.insert(data: 10)
+        avlTree.insert(data: 11)
+        avlTree.insert(data: 11)
+        avlTree.insert(data: 8)
+        avlTree.insert(data: 22)
+        avlTree.insert(data: -9)
+        var nodes: [Int] = [Int].init()
+        print("Before Reverse: ")
+        avlTree.inOrderTraverse(n: avlTree.root, nodes: &nodes)
+        avlTree.reverseTree(node: avlTree.root)
+        print("After Reverse: ")
+        avlTree.inOrderTraverse(n: avlTree.root, nodes: &nodes)
     }
     
     func testPerformanceExample() {

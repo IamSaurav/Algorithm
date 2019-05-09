@@ -255,4 +255,14 @@ class AVLTree: NSObject {
         }
     }
     
+    func reverseTree(node: Node?) {
+        if let current = node{
+            let tempNode = node?.right
+            node?.right = current.left
+            node?.left = tempNode
+            reverseTree(node: node?.left)
+            reverseTree(node: node?.right)
+        }
+    }
+    
 }
