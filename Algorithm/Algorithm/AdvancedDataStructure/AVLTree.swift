@@ -9,7 +9,7 @@
 import UIKit
 
 class AVLTree: NSObject {
-
+    
     public class Node: NSObject {
         var left: Node?
         var right: Node?
@@ -37,10 +37,10 @@ class AVLTree: NSObject {
     
     /*
      When the node is left imbalanced, we rotate towards right.
-           X
-          /
-        Y
-      /
+     X
+     /
+     Y
+     /
      Z
      Steps:
      1. Set right link of left node of current node as current node.
@@ -48,7 +48,7 @@ class AVLTree: NSObject {
      Why? In some cases there may be right node of Y which we have to take care.
      And if we assign left node of current node as Right node of Y rule wise there will not be any problem,
      because value of X will be greater anyway.
-    */
+     */
     @discardableResult
     func rightRotation(node: Node?) -> Node? {
         // We need to keep the reference of these nodes, because while replacing we loose reference.
@@ -67,11 +67,11 @@ class AVLTree: NSObject {
     
     /*
      When the node is rigt imbalanced, we rotate towards left.
-      X
-       \
-        Y
-        \
-         Z
+     X
+     \
+     Y
+     \
+     Z
      Steps:
      1. Set left link of left node of current node as current node.
      2. Set right link of current node as left node of right node of current node.
@@ -103,7 +103,7 @@ class AVLTree: NSObject {
     }
     
     func insert(data:Int) {
-      insert(node: &root, data: data)
+        insert(node: &root, data: data)
     }
     
     func insert(node: inout Node?, data:Int) {
@@ -119,6 +119,68 @@ class AVLTree: NSObject {
             // After inserting, height needs to be updated.
             node?.height = greaterHeight(node: node) + 1
             
+            balanceTree(node: &node, data: data)
+            
+        }else{
+            node = Node.create(left: nil, right: nil, data: data, height: 1)
+        }
+    }
+    
+    @discardableResult
+    func delete(data: Int) -> Int? {
+        /*
+         Either create a local copy of root to pass to the delete method or pass the root itself.
+         If copy of of root passed then it needs to be assigned back to root after delete method execution.
+         Because while deleting when there is only one node left and that that is root node, you can delete all the references but root node will not become null.
+         
+         var current = root
+         delete(current: &current, data: data)
+         root = current
+         return current?.data
+         */
+        delete(node: &root, data: data)
+        return data
+    }
+    
+    func delete(node: inout Node?, data:Int) {
+        if let current = node{
+            if data < current.data{
+                delete(node: &current.left, data: data)
+            }else if data > current.data{
+                delete(node: &current.right, data: data)
+            }else{
+                if node?.left == nil && node?.right == nil{
+                    node = nil
+                }else if node?.left != nil{
+                    node = node?.left
+                }else if node?.right != nil{
+                    node = node?.right
+                }else{
+                    let minimumData = minimumElement(current: &node)?.data
+                    node?.data = minimumData
+                    delete(node: &current.right, data: minimumData!)
+                }
+            }
+            
+            // After inserting, height needs to be updated.
+            node?.height = greaterHeight(node: node) + 1
+            
+            balanceTree(node: &node, data: data)
+        }
+    }
+    
+    func minimumElement(current: inout Node?) -> Node? {
+        if var node = current {
+            while node.left != nil {
+                node = node.left!
+            }
+            return node
+        }
+        return current
+    }
+    
+    func balanceTree(node: inout Node?, data: Int) {
+        if let current = node {
             // Now we need to check the balance factor of new node.
             // If it is not balanced then we will have to rotate to make it balanced.
             let balance = balanceFactor(node: node)
@@ -150,8 +212,7 @@ class AVLTree: NSObject {
                 node = leftRotation(node: node)
                 return
             }
-        }else{
-            node = Node.create(left: nil, right: nil, data: data, height: 1)
+            
         }
     }
     
@@ -193,5 +254,5 @@ class AVLTree: NSObject {
             nodes.append(node.data)
         }
     }
-
+    
 }
