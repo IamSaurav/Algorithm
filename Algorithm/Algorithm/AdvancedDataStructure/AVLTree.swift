@@ -43,8 +43,7 @@
  (e) Value of right node should be greater than value of the parent node. Which is same as binary tree.
  
  Q: Why AVL Tree? When we have binary search tree.
- Ans: The time complexity for searching an element in AVL tree is much better compared to binary search tree gets worst.
-      Time complexity of an AVL tree is O(h) where h is height of tree.
+ Ans: The time complexity for searching an element in AVL tree is much better compared to bst.
       Let's say we will have to search a 20 in below tree, we will have to take 3 steps to get there.
       7
        \
@@ -63,7 +62,8 @@
   Now let's see how many steps to get node with value 20.
   20 is >10 so we will find in the right side, if we couldn't find in this step we will further search in it's child node.
   In next search we get the matching value of 20. So, it took 2 steps to search. This difference becomes significant in larger trees.
- 
+ Time complexity of an AVL tree is O(h) where h is height of tree, whereas in bst it can be O(n) in worst case...
+ where n is the number of nodes.
  
  Extra Note (Can be ignored):
  -------------------------------------------------------------

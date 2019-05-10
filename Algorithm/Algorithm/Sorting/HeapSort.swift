@@ -7,7 +7,7 @@
 //
 
 /*
- Heap Sort:
+ Introduction:
  1. Build a Max Heap from the input data.
  2. Now the largest item is stored at the root of the heap.
  3. So we will swap the first element of the list with the final element...
@@ -44,19 +44,21 @@ class HeapSort: NSObject {
     func heapSort(array: inout [Int]){
         // Build the max heap first to organize the array.
         // Q: Why buildMaxHeap() in two different loop?
-        // Ans: Because actual job of second loop is to take the root node and by swapping, place it to the right most side of the array.
-        //      Then build the Max Heap again becuse, after replacing it got disturbed.
-        //      We could've called buildMaxHeap() before swaping operation also but it doesn't work when it reaches 0th index.
+        // Ans: In the second loop we take out the root node and place it towards the right most side of the array.
+        //      Then build the Max Heap again becuse, after replacing tree got disturbed.
         // Q: Why .reversed() ?
         // Ans: As we sort the array we take the largest and park it on the right most side.
-        //      Thus to leave aside those sorted values we start from last to start.
-        //      This is for convenience or else we will have to keep track of index till where it sorted.
+        //      Thus to leave aside those sorted values towards the end we start from last to start.
+        //      This is just for convenience.
         // Q: Why array.count/2?
         // Ans: While building Max Heap out of an array, we need two children for every parent, so maximum it can reach up to count/2.
         // Q: Then why not array.count/2 in secons loop in bottom?
-        // Ans: There we're not only building max heap but we are taking out the root node and placing it towards the right most side.
-        //      In this process we get root node in 0'th index, so we replace it with right most element.
+        // Ans: There we're not only building max heap but also we are taking out the root node
+        //      and placing it towards the right most side.
+        //      In this process we get root node in 0'th index, so we replace it with right most element in the input array.
+        //      Now decrease the considered range for sorting the list by one.
         //      Then again we build the max heap because it got disturbed by replacing.
+        //      Then again we take out root and place towards the end of array...and this process continues.
         for i in (0..<array.count/2).reversed() {
             buildMaxHeap(arr: &array, sizeOfHeap: array.count, rootIndex: i)
         }
@@ -67,7 +69,7 @@ class HeapSort: NSObject {
             array[0] = array[i]
             array[i] = temp
             // Build Max Heap on the reduced heap.
-            buildMaxHeap(arr: &array, sizeOfHeap: i, rootIndex: 0)
+            buildMaxHeap(arr: &array, sizeOfHeap: i/2, rootIndex: 0)
         }
     }
     

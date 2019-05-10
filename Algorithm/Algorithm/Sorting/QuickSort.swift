@@ -6,6 +6,14 @@
 //  Copyright © 2018 com.bitMountn.Algorithm. All rights reserved.
 //
 
+/*
+ Quicksort is a divide and conquer algorithm. Quicksort first divides a large array into two smaller sub-arrays.
+ The smaller elements and the greater elements. Then recursively sort the sub-arrays. The steps are:
+ Steps:
+ 1. Choose one element from array. This element is called pivot.
+ 2. Recursively move smaller than pivot element in left side, and greater than this on right side.
+ */
+
 import UIKit
 
 class QuickSort: NSObject {
