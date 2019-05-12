@@ -40,6 +40,12 @@ class QuickSortTests: XCTestCase {
         XCTAssertEqual(sortedArray, [0, 5])
     }
     
+    func testDuplicateItemsArraySort() {
+        let unsortedArray: [Int] = [5, 0, 4, 4]
+        let sortedArray = QuickSort.init().quickSort(array: unsortedArray)
+        XCTAssertEqual(sortedArray, [0, 4, 4, 5])
+    }
+    
     func testExtremeValueArraySort() {
         let unsortedArray: [Int] = [1,-1,0,-12324324,48549875894,57475,5,-00002,7543]
         let sortedArray = QuickSort.init().quickSort(array: unsortedArray)
