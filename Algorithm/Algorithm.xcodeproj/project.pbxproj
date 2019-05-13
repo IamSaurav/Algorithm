@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		235FE3DC228451FB00F29360 /* AVLTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FE3DB228451FB00F29360 /* AVLTreeTests.swift */; };
+		2375A4A2228948D100C86AFD /* ComplexityCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */; };
 		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
 		23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C59F5E2281BF1C003E4648 /* AVLTree.swift */; };
 		23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2D1A227AC7B300B45746 /* GenericStack.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		235FE3DB228451FB00F29360 /* AVLTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTreeTests.swift; sourceTree = "<group>"; };
+		2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexityCalculation.swift; sourceTree = "<group>"; };
 		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		23C59F5E2281BF1C003E4648 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
 		23EE2D1A227AC7B300B45746 /* GenericStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericStack.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 			path = "Advanced DataStructure";
 			sourceTree = "<group>";
 		};
+		2375A4A3228948D600C86AFD /* ComplexityCalculation */ = {
+			isa = PBXGroup;
+			children = (
+				2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */,
+			);
+			path = ComplexityCalculation;
+			sourceTree = "<group>";
+		};
 		23C59F602281BF20003E4648 /* AdvancedDataStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 			children = (
 				E0A729EA20FD26AD00A88E75 /* Sorting */,
 				E0A72A0820FD2C6300A88E75 /* DataStructure */,
+				2375A4A3228948D600C86AFD /* ComplexityCalculation */,
 				23C59F602281BF20003E4648 /* AdvancedDataStructure */,
 				23F548F220F900FC00C174BC /* AppDelegate.swift */,
 				23F548F420F900FC00C174BC /* ViewController.swift */,
@@ -336,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */,
+				2375A4A2228948D100C86AFD /* ComplexityCalculation.swift in Sources */,
 				E0A729FF20FD2C3800A88E75 /* LinkedList.swift in Sources */,
 				E0A72A0720FD2C5D00A88E75 /* Graph.swift in Sources */,
 				23F548F520F900FC00C174BC /* ViewController.swift in Sources */,
