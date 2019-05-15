@@ -10,74 +10,42 @@ import UIKit
 
 class Dijkastras: NSObject {
     
-//    func shortestPath (source: Graph.Node, destination: Graph.Node, graph: Graph) -> Int {
-//        if source == destination { return 0 }
-//        var currentNode = source
-//        currentNode.isVisited = true
-//        currentNode.minDistanceToStart = 0
-//        var toVisit = [Graph.Node]()
-//        toVisit.append(currentNode)
-//        while !toVisit.isEmpty {
-//            toVisit = toVisit.filter{ $0 != currentNode }
-//            currentNode.isVisited = true
-//            // Go to each adjacent vertex and update the path length
-//            for connectedEdge in currentNode.edges {
-//                let currentDistanceToStart = currentNode.minDistanceToStart + (connectedEdge.weight ?? 0)
-//                if let destination = connectedEdge.destination {
-//                    if (currentDistanceToStart < destination.minDistanceToStart) {
-//                        destination.minDistanceToStart = currentDistanceToStart
-//                        toVisit.append(destination)
-//                        destination.isVisited = !destination.isVisited
-//                    }
-//                }
-//            }
-//            currentNode.isVisited = true
-//            //set current node to the smallest vertex
-//            if !toVisit.isEmpty {
-//                currentNode = toVisit.min(by: { (a, b) -> Bool in
-//                    return a.minDistanceToStart < b.minDistanceToStart
-//                })!
-//            }
-//            if (currentNode == destination) {
-//                return currentNode.minDistanceToStart
-//            }
-//        }
-//        return -1
-//    }
-
-    func shortestPath (source: Graph.Node, destination: Graph.Node, graph: Graph) -> Int {
+    func shortestPath (source: Node, destination: Node, graph: Graph) -> Int {
         if source == destination { return 0 }
         
-        source.distanceFromSource = 0
-        var toVisit = [Graph.Node]()
+        source.distance = 0
+        var toVisit = [Node]()
         toVisit.append(source)
         while !toVisit.isEmpty {
             let node = toVisit.min(by: { (node, node1) -> Bool in
-                return node.distanceFromSource < node.distanceFromSource
+                return node.distance < node.distance
             })!
             
             // Destination reached?
-            if node == destination { return node.distanceFromSource }
+            if node == destination { return node.distance }
             
             // Mark as visited.
             node.isVisited = true
-            // Remove that node from Queue.
-            if let index = toVisit.index(of: node){
-                toVisit.remove(at: index)
-            }
+            toVisit.remove(at: toVisit.index(of: node)!)
             
             // Update unvisited neighbors.
-            for edge in node.edges where !(edge.destination?.isVisited ?? true) {
-                if let neighbor = edge.destination {
+            for edge in node.edges {
+                if let neighbor = edge.destination as? Node, !neighbor.isVisited {
                     toVisit.append(neighbor)
-                    let distance = node.distanceFromSource + edge.weight
-                    neighbor.distanceFromSource = distance < neighbor.distanceFromSource ? distance : neighbor.distanceFromSource
+                    let distance = node.distance + edge.weight
+                    neighbor.distance = distance < neighbor.distance ? distance : neighbor.distance
                 }
             }
         }
         return -1
     }
 
+}
+
+
+class Node: Graph.Node {
+    var distance = Int.max
+    var isVisited = false
 }
 
 

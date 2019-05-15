@@ -49,8 +49,6 @@ class Graph: NSObject {
     public class Node: NSObject {
         var data: Int!
         var edges: [Edge] = []
-        var isVisited: Bool = false
-        var distanceFromSource = Int.max
         
         public class func create(data: Int, edges: [Edge]) -> Node {
             let node = Node.init()
