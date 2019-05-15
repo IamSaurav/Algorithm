@@ -54,6 +54,8 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(node5.edges.first?.source, node5)
         XCTAssertEqual(node4.edges.count, 2)
         XCTAssertEqual(node2.edges.count, 3)
+        let dij = Dijkastras.init()
+        let dist = dij.shortestPath(source: graph.root!, destination: graph.root!, graph: graph)
     }
     
     func testRemoveNode() {

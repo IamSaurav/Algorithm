@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		235FE3DC228451FB00F29360 /* AVLTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FE3DB228451FB00F29360 /* AVLTreeTests.swift */; };
+		236DA729228BF20E00973E4F /* Dijkastras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DA728228BF20E00973E4F /* Dijkastras.swift */; };
 		2375A4A2228948D100C86AFD /* ComplexityCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */; };
 		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
 		23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C59F5E2281BF1C003E4648 /* AVLTree.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		235FE3DB228451FB00F29360 /* AVLTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTreeTests.swift; sourceTree = "<group>"; };
+		236DA728228BF20E00973E4F /* Dijkastras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dijkastras.swift; sourceTree = "<group>"; };
 		2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexityCalculation.swift; sourceTree = "<group>"; };
 		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		23C59F5E2281BF1C003E4648 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				23C59F5E2281BF1C003E4648 /* AVLTree.swift */,
+				236DA728228BF20E00973E4F /* Dijkastras.swift */,
 			);
 			path = AdvancedDataStructure;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				E0A729EC20FD26C100A88E75 /* HeapSort.swift in Sources */,
 				E0A729F920FD287A00A88E75 /* BubbleSort.swift in Sources */,
 				23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */,
+				236DA729228BF20E00973E4F /* Dijkastras.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

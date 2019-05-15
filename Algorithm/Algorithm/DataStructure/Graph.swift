@@ -34,7 +34,7 @@ class Graph: NSObject {
     private(set) var root: Node?
 
     public class Edge: NSObject {
-        var weight: Int?
+        var weight: Int!
         var source: Node?
         var destination: Node?
         public class func create(source: Node, destination: Node, weight: Int) -> Edge {
@@ -49,7 +49,8 @@ class Graph: NSObject {
     public class Node: NSObject {
         var data: Int!
         var edges: [Edge] = []
-        var isVisited: Bool!
+        var isVisited: Bool = false
+        var distanceFromSource = Int.max
         
         public class func create(data: Int, edges: [Edge]) -> Node {
             let node = Node.init()
