@@ -13,6 +13,8 @@
 		2375A4A2228948D100C86AFD /* ComplexityCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */; };
 		23927738210A045C000B3C44 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23927737210A045C000B3C44 /* QueueTests.swift */; };
 		23C59F5F2281BF1C003E4648 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C59F5E2281BF1C003E4648 /* AVLTree.swift */; };
+		23D65C2A228D91E900364285 /* Knapsack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D65C29228D91E900364285 /* Knapsack.swift */; };
+		23D65C2C228D91FA00364285 /* KnapsackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D65C2B228D91FA00364285 /* KnapsackTests.swift */; };
 		23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2D1A227AC7B300B45746 /* GenericStack.swift */; };
 		23F548F320F900FC00C174BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F220F900FC00C174BC /* AppDelegate.swift */; };
 		23F548F520F900FC00C174BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F548F420F900FC00C174BC /* ViewController.swift */; };
@@ -64,6 +66,8 @@
 		2375A4A1228948D100C86AFD /* ComplexityCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexityCalculation.swift; sourceTree = "<group>"; };
 		23927737210A045C000B3C44 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		23C59F5E2281BF1C003E4648 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
+		23D65C29228D91E900364285 /* Knapsack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knapsack.swift; sourceTree = "<group>"; };
+		23D65C2B228D91FA00364285 /* KnapsackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnapsackTests.swift; sourceTree = "<group>"; };
 		23EE2D1A227AC7B300B45746 /* GenericStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericStack.swift; sourceTree = "<group>"; };
 		23F548EF20F900FC00C174BC /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F548F220F900FC00C174BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				235FE3DB228451FB00F29360 /* AVLTreeTests.swift */,
 				236DA72A228C82CF00973E4F /* DijkastrasTests.swift */,
+				23D65C2B228D91FA00364285 /* KnapsackTests.swift */,
 			);
 			path = "Advanced DataStructure";
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			children = (
 				23C59F5E2281BF1C003E4648 /* AVLTree.swift */,
 				236DA728228BF20E00973E4F /* Dijkastras.swift */,
+				23D65C29228D91E900364285 /* Knapsack.swift */,
 			);
 			path = AdvancedDataStructure;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D65C2A228D91E900364285 /* Knapsack.swift in Sources */,
 				23EE2D1B227AC7B300B45746 /* GenericStack.swift in Sources */,
 				2375A4A2228948D100C86AFD /* ComplexityCalculation.swift in Sources */,
 				E0A729FF20FD2C3800A88E75 /* LinkedList.swift in Sources */,
@@ -394,6 +401,7 @@
 				E0A729F620FD27BD00A88E75 /* HeapSortTests.swift in Sources */,
 				E0A729F420FD27B200A88E75 /* QuickSortTests.swift in Sources */,
 				235FE3DC228451FB00F29360 /* AVLTreeTests.swift in Sources */,
+				23D65C2C228D91FA00364285 /* KnapsackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

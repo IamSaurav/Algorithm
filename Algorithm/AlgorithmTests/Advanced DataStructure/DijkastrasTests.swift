@@ -7,7 +7,11 @@
 //  Copyright © 2019 com.fsfes.frewfer. All rights reserved.
 //
 
-import UIKit
+/*
+ https://codereview.stackexchange.com/questions/212260/dijkstra-algorithm-implementation-in-swift?newreg=fb3120f330e34a8b90cb56a0c1604e47
+ 
+ */
+
 import XCTest
 
 @testable import Algorithm
@@ -21,7 +25,7 @@ class DijkastrasTests: XCTestCase {
         
     }
     
-    func testAddNode() {
+    func testShortestPaths() {
         let rootNode = Graph.Node.create(data: 100, edges: [])
         let graph = Graph.create(rootNode: rootNode)
         let node0 = Graph.Node.create(data: 0, edges: [])

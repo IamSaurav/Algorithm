@@ -30,8 +30,9 @@
  Let's try few examples for worst case:
  O(1): if it doesn’t contain loop, recursion and call to any other function.
  O(n): Time Complexity of a loop is considered as O(n) if the loop variables is incremented/decremented by a constant amount.
+ O(n^2): Time complexity of nested loops is equal to the number of times the innermost statement is executed.
  O(Logn): Time Complexity of a loop is considered as O(Logn) if the loop variables is divided/multiplied by a constant amount.
- 
+ O(LogLogn): Time Complexity of a loop is considered as O(LogLogn) if the loop variables is reduced / increased exponentially by a constant amount.
  */
 
 import UIKit
@@ -54,7 +55,7 @@ class ComplexityCalculation: NSObject {
         return sum
     }
     
-    // Worst Case Complexity: O(n)
+    // Worst Case Complexity: O(n^2)
     // There are two loops which runs from 0 to array count, that's why n rest of the code will not take..
     // extra time when input time increases.
     func sumOfArrayOfArray(array:[Int], array1:[Int]) -> Int {
@@ -89,6 +90,17 @@ class ComplexityCalculation: NSObject {
         }
         return sum
     }
+    
+    // Worst Case Complexity: O(LogLogn)
+    // There is one loop whose counter increases with constant time power, here it is 2.
+    func sumOfArray2(array:[Int]) -> Int {
+        var sum = 0;
+        for i in 0..<Int(pow(Double(array.count), Double(2))) {
+            sum += array[i]
+        }
+        return sum
+    }
+    
     
     
 }
