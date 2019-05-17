@@ -20,29 +20,43 @@ class KnapsackTests: XCTestCase {
     }
     
     func testKnapsack() {
-        var values = [10, 50, 70 ]
-        var weights = [10, 20, 30]
+        var items = [Knapsack.Item].init()
+        items.append(Knapsack.Item.create(value: 10, weight: 10))
+        items.append(Knapsack.Item.create(value: 20, weight: 50))
+        items.append(Knapsack.Item.create(value: 70, weight: 30))
         let knap = Knapsack.init()
-        var result = knap.knapsack(capacity: 40, weights: weights, values: values)
-        XCTAssertEqual(result, 80)
-        result = knap.knapsack(capacity: 140, weights: weights, values: values)
-        XCTAssertEqual(result, 130)
-        result = knap.knapsack(capacity: 30, weights: weights, values: values)
-        XCTAssertEqual(result, 70)
-        
-        values = [20, 70, 40, 20, 10, 22]
-        weights = [20, 70, 40, 20, 10, 22]
-        result = knap.knapsack(capacity: 40, weights: weights, values: values)
-        XCTAssertEqual(result, 40)
-        
-        values = [20, 70, 40, 25, 10, 132]
-        weights = [10, 5, 20, 30, 40, 52]
-        result = knap.knapsack(capacity: 52, weights: weights, values: values)
-        XCTAssertEqual(result, 132)
-        result = knap.knapsack(capacity: 50, weights: weights, values: values)
-        XCTAssertEqual(result, 130)
+        var maxValue = knap.knapsack(capacity: 40, items: items)
+        XCTAssertEqual(maxValue, 80)
+        maxValue = knap.knapsack(capacity: 140, items: items)
+        XCTAssertEqual(maxValue, 100)
+        maxValue = knap.knapsack(capacity: 30, items: items)
+        XCTAssertEqual(maxValue, 70)
 
+        items.removeAll()
+        items.append(Knapsack.Item.create(value: 20, weight: 20))
+        items.append(Knapsack.Item.create(value: 70, weight: 70))
+        items.append(Knapsack.Item.create(value: 40, weight: 40))
+        items.append(Knapsack.Item.create(value: 20, weight: 20))
+        items.append(Knapsack.Item.create(value: 10, weight: 10))
+        items.append(Knapsack.Item.create(value: 22, weight: 22))
+        maxValue = knap.knapsack(capacity: 40, items: items)
+        XCTAssertEqual(maxValue, 40)
         
+        items.removeAll()
+        items.append(Knapsack.Item.create(value: 20, weight: 10))
+        items.append(Knapsack.Item.create(value: 70, weight: 5))
+        items.append(Knapsack.Item.create(value: 40, weight: 20))
+        items.append(Knapsack.Item.create(value: 20, weight: 30))
+        items.append(Knapsack.Item.create(value: 10, weight: 40))
+        items.append(Knapsack.Item.create(value: 22, weight: 52))
+
+        maxValue = knap.knapsack(capacity: 52, items: items)
+        XCTAssertEqual(maxValue, 130)
+        maxValue = knap.knapsack(capacity: 50, items: items)
+        XCTAssertEqual(maxValue, 130)
+        
+        items.removeAll()
+        items.append(Knapsack.Item.create(value: 1, weight: 1))
     }
     
 }
