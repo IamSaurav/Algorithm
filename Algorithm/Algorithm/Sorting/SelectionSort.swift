@@ -43,7 +43,7 @@ import UIKit
 
 public class SelectionSort {
     
-    public func selectionSort(_ arr: [Int]) -> [Int] {
+    public func selectionSort1(_ arr: [Int]) -> [Int] {
         // Need to modify so created a variable copy.
         var arr = arr
         // This loop used for selection of element, it starts selecting item from start to end.
@@ -61,6 +61,19 @@ public class SelectionSort {
             let temp = arr[i]
             arr[i] = arr[selectedItemIndex]
             arr[selectedItemIndex] = temp
+        }
+        return arr
+    }
+    public func selectionSort(_ array: [Int]) -> [Int] {
+        var arr = array
+        for i in 0..<arr.count {
+            var minIndex = i
+            for j in i+1..<arr.count{
+                if arr[j] < arr[minIndex] {
+                    minIndex = j
+                }
+            }
+            arr.swapAt(i, minIndex)
         }
         return arr
     }
