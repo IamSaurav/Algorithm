@@ -89,6 +89,14 @@ class HashTable: NSObject {
         }
     }
     
+    func HashKey(value: String) -> String {
+        var constnt = 33
+        for (index, char) in value.characters.enumerated() {
+            let index = ((Int)char) % 32;
+            constnt += index^position
+        }
+    }
+    
     func remove(key: String) {
         let index = findIndex(key: key)
         var node: Node? = nodes[index]

@@ -10,14 +10,14 @@
  Selection Sort:
  It starts by selecting the first element and then keeps comparing it with next element till it reaches last.
  While comparing if it finds any element, smaller than the selected one, then it will keep the index of that element..
- and for next comparisions it usage the value of this index until it finds even smaller element.
+ and for next comarisions it usage the value of this index until it finds even smaller element.
  At the end, it will find the samllest element and swap it with the selected element.
  By doing this we get smallest item in every iteration and we keep those in the left side of the array.
  After every iteration it starts from next element of the last selected one.
- Which means it keep reducing the number of elements to be sorted.
- As this approach selects an element and compare with others, that's why it's called Selection Sort.
+ Which means it keep reducing the number of elements from which it gets the smallest element.
+ As you saw this approach, selects an element and compare with others thus the name Selection Sort.
  
- Summary: finds smallest element and moves it to left. It keeps track of index of smaller element & doesn't swap until gets smallest.
+ Summary: finds smallest element and moves it left. It keeps track of index of smaller element & doesn't swap until gets smallest.
  
  Example below.
  
@@ -43,7 +43,7 @@ import UIKit
 
 public class SelectionSort {
     
-    public func selectionSort1(_ arr: [Int]) -> [Int] {
+    public func selectionSort<T: Comparable> (_ arr: [T]) -> [T] {
         // Need to modify so created a variable copy.
         var arr = arr
         // This loop used for selection of element, it starts selecting item from start to end.

@@ -135,7 +135,7 @@ class Tree: NSObject {
          Q.Why smallest?
          Ans: Two reasons.
             1.Smallest will always be leaf node, then it becomes easy to delete. just assign nil.
-            2. Right chlid's value will be greater than this one, which is rule for binary tree.
+            2. Right chlid's value will be greater than this one, which also satisfies the rule of binary tree.
          Q.Why only on right side? why not left?
          Ans: Because if you make smallest node of left side as parent, then left child's value may be greater which is against rule.
          Q. Why replace data?
@@ -144,7 +144,7 @@ class Tree: NSObject {
          Q.Why don't you assign nil immdeiately after replacing? Why recursion again?
          Ans: Just to avoid duplicate code, we have already written a line to delete a node.
      */
-    func delete(current: inout Node?, data: Int)  {
+    func delete(current: inout Node?, data: Int) {
         // If root node is null then nothing to delete.
         if let node = current {
             if data < node.data{

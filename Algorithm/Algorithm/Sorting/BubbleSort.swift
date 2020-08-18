@@ -61,7 +61,7 @@ class BubbleSort: NSObject {
         var arr = arr
         // This loop run only once, 0...arr count.
         for i in 0..<arr.count-1 {
-            // This loop rund from 0... to last and reduces one loop every time.
+            // This loop run from 0... to last and reduces one loop every time.
             // Because we get the largest number in every iteration. So we keep the largest element at the right end.
             // This loop swaps the adjacent elements, if left one is greater than right one.
             for j in 0..<arr.count - 1 - i {
